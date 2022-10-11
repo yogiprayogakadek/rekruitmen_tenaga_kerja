@@ -34,10 +34,17 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Widgets</span>
+                    <a class="nav-link menu-link {{Request::is('pengumuman') ? 'active' : '' }}" href="{{route('pengumuman.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Pengumuman</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('lowongan') ? 'active' : '' }}" href="{{route('lowongan.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Lowongan</span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
         <!-- Sidebar -->

@@ -12,3 +12,8 @@
 <script src="assets/js/pages/particles.app.js"></script>
 <!-- password-addon init -->
 <script src="assets/js/pages/password-addon.init.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.2.1/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+@stack('script')

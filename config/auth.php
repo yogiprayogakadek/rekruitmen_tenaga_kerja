@@ -15,7 +15,8 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'pelamar',
+        // 'passwords' => 'users',
     ],
 
     /*
@@ -38,8 +39,22 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'pelamar',
         ],
+
+        'weboperator' => [
+            'driver' => 'session',
+            'provider' => 'operator'
+        ]
+        // 'web' => [
+        //     'driver' => 'session',
+        //     'provider' => 'users',
+        // ],
+
+        // 'webpelamar' => [
+        //     'driver' => 'session',
+        //     'provider' => 'pelamar'
+        // ]
     ],
 
     /*
@@ -60,14 +75,23 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'pelamar' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pelamar::class,
+        ],
+
+        'operator' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
         // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+
+        // 'pelamar' => [
+        //     'driver' => 'elequent',
+        //     'model' => App\Models\Pelamar::class,
         // ],
     ],
 
@@ -87,8 +111,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'pelamar' => [
+            'provider' => 'pelamar',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

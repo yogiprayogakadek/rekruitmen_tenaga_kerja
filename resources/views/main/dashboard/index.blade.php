@@ -5,6 +5,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-6 col-xl-3">
+            {{Auth::guard('weboperator')->user() ?? Auth::user()}}
             <!-- Simple card -->
             <div class="card">
                 <img class="card-img-top img-fluid" src="{{asset('assets/images/small/img-1.jpg')}}" alt="Card image cap">

@@ -18,4 +18,14 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+    // protected function redirectTo($request)
+    // {
+    //     if (! $request->expectsJson()) {
+    //         if ($request->routeIs('cpanel.*')) {
+    //             return route('cpanel.index');
+    //         }
+
+    //         return route('login');
+    //     }
+    // }
 }
