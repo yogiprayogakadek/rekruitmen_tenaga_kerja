@@ -27,6 +27,7 @@ class LowonganRequest extends FormRequest
         $rules =  [
             'nama' => 'required',
             'deskripsi' => 'required',
+            'posisi' => 'required',
         ];
 
         if(!Request::instance()->has('id')) {
@@ -59,6 +60,7 @@ class LowonganRequest extends FormRequest
     {
         return [
             'nama' => 'Nama',
+            'posisi' => 'Posisi',
             'deskripsi' => 'Deskripsi',
             'status' => 'Status',
             'foto' => 'Foto',

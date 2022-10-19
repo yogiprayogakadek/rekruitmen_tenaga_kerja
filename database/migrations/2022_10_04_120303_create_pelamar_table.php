@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('marital_status', 50);
             $table->string('username', 100);
             $table->string('password', 100);
+            $table->json('documents')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

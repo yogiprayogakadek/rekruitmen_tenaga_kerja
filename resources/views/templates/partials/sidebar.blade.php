@@ -44,6 +44,42 @@
                         <i class="las la-flask"></i> <span data-key="t-widgets">Lowongan</span>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('pelamar') ? 'active' : '' }}" href="{{route('pelamar.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Pelamar</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('dokumen') ? 'active' : '' }}" href="{{route('dokumen.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Dokumen</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('lamaran') ? 'active' : '' }}" href="{{route('lamaran.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Lamaran</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('jadwal') ? 'active' : '' }}" href="{{route('jadwal.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Jadwal</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('prainterview') ? 'active' : '' }}" href="{{route('prainterview.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Pra Interview</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('finalinterview') ? 'active' : '' }}" href="{{route('finalinterview.index')}}">
+                        <i class="las la-flask"></i> <span data-key="t-widgets">Final Interview</span>
+                    </a>
+                </li>
                 
             </ul>
         </div>

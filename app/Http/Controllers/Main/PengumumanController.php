@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PengumumanRequest;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PengumumanController extends Controller
 {
@@ -38,7 +39,7 @@ class PengumumanController extends Controller
     {
         try {
             $data = [
-                'user_id' => auth()->user()->id,
+                'user_id' => Auth::guard('weboperator')->user()->id,
                 'perihal' => $request->perihal,
                 'deskripsi' => $request->deskripsi,
                 'status' => true
@@ -76,7 +77,7 @@ class PengumumanController extends Controller
         try {
             $pengumuman = pengumuman::find($request->id);
             $data = [
-                'user_id' => auth()->user()->id,
+                'user_id' => Auth::guard('weboperator')->user()->id,
                 'perihal' => $request->perihal,
                 'deskripsi' => $request->deskripsi,
                 'status' => $request->status

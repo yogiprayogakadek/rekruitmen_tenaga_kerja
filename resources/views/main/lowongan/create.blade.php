@@ -22,8 +22,14 @@
                     <div class="invalid-feedback error-nama"></div>
                 </div>
                 <div class="form-group mt-3">
+                    <label for="posisi">Posisi</label>
+                    <textarea class="form-control posisi" name="posisi" id="posisi" placeholder="masukkan posisi"></textarea>
+                    <span class="text-muted text small">*gunakan tanda koma (,) sebagai pemisah</span>
+                    <div class="invalid-feedback error-posisi"></div>
+                </div>
+                <div class="form-group mt-3">
                     <label for="deskripsi">Deskripsi</label>
-                    <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" placeholder="masukkan deskripsi pengumuman"></textarea>
+                    <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" placeholder="masukkan deskripsi"></textarea>
                     <div class="invalid-feedback error-deskripsi"></div>
                 </div>
                 <div class="form-group">

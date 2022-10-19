@@ -12,4 +12,9 @@ class Pelamar extends Authenticatable
 
     protected $table = 'pelamar';
     protected $guarded = ['id'];
+
+    public function lamaran()
+    {
+        return $this->hasOne(Lamaran::class, 'pelamar_id', 'id');
+    }
 }

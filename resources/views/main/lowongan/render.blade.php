@@ -18,6 +18,7 @@
                 <thead>
                     <th>No</th>
                     <th>Nama Lowongan</th>
+                    <th>Posisi</th>
                     <th>Foto</th>
                     <th>Deskripsi</th>
                     <th>Petugas</th>
@@ -29,6 +30,11 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$lowongan->nama}}</td>
+                        <td>
+                            @foreach (explode(',', $lowongan->posisi) as $item)
+                                <ul><li>{{$item}}</li></ul>
+                            @endforeach
+                        </td>
                         <td>
                             <img src="{{asset($lowongan->foto)}}" width="150px">
                         </td>

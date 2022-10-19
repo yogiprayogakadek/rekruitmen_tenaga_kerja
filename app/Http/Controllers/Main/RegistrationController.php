@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\TtRequest;
+use App\Models\Lamaran;
 use App\Models\Pelamar;
 use Illuminate\Http\Request;
 use Image;
@@ -56,14 +57,24 @@ class RegistrationController extends Controller
                 $data['foto'] = $save_path . '/' . $filenametostore;
             }
 
-            // dd($data);
-
+            
+            $documents = [
+                'cv' => "empty",
+                'sertifikat_pengalaman_kerja' => "empty",
+                'ijazah_terakhir' => "empty",
+                'ktp' => "empty",
+                'passport' => "empty", //kartu keluarga
+                'sat' => "empty",
+                'crowd' => "empty",
+                'crisis' => "empty",
+                'bst' => "empty",
+                'seamenbook' => "empty",
+            ];
+            
+            $data['documents'] = json_encode($documents);
+            
             Pelamar::create($data);
 
-            // return redirect()->route('login')->with([
-            //     'message' => 'Pendaftaran berhasil',
-            //     'status' => 'success',
-            // ]);
             return redirect()->back()->with([
                 'message' => 'Pendaftaran berhasil',
                 'status' => 'success',

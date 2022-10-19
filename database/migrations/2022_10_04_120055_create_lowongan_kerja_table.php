@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->comment('user yang melakukan update data')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama', 100);
             $table->string('foto', 100);
+            $table->text('posisi');
             $table->text('deskripsi');
             $table->timestamps();
         });

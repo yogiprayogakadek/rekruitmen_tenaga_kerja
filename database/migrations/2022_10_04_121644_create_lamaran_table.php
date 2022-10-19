@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->comment('user yang melakukan update data')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('pelamar_id')->references('id')->on('pelamar')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('apply_for', 100);
+            $table->foreignId('lowongan_id')->references('id')->on('lowongan_kerja')->onDelete('cascade')->onUpdate('cascade');
             $table->string('posisi', 100);
-            $table->json('documents');
-            $table->boolean('status')->default(true);
+            // $table->string('apply_for', 100);
+            // $table->json('documents');
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

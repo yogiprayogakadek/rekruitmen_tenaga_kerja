@@ -22,16 +22,22 @@
                     <input type="text" class="form-control nama" name="nama" id="nama" placeholder="masukkan nama lowongan" value="{{$lowongan->nama}}">
                     <div class="invalid-feedback error-nama"></div>
                 </div>
-                <div class="form-group">
-                    <label for="foto">Foto</label>
-                    <input type="file" class="form-control foto" name="foto" id="foto">
-                    <span class="text-small text-muted">*kosongkan jika tidak ingin mengganti foto</span>
-                    <div class="invalid-feedback error-foto"></div>
+                <div class="form-group mt-3">
+                    <label for="posisi">Posisi</label>
+                    <textarea class="form-control posisi" name="posisi" id="posisi" placeholder="masukkan posisi">{{$lowongan->posisi}}</textarea>
+                    <span class="text-muted text small">*gunakan tanda koma (,) sebagai pemisah</span>
+                    <div class="invalid-feedback error-posisi"></div>
                 </div>
                 <div class="form-group mt-3">
                     <label for="deskripsi">Deskripsi</label>
                     <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" placeholder="masukkan deskripsi lowongan">{{$lowongan->deskripsi}}</textarea>
                     <div class="invalid-feedback error-deskripsi"></div>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Foto</label>
+                    <input type="file" class="form-control foto" name="foto" id="foto">
+                    <span class="text-small text-muted">*kosongkan jika tidak ingin mengganti foto</span>
+                    <div class="invalid-feedback error-foto"></div>
                 </div>
                 <div class="form-group mt-3">
                     <label for="deskripsi">Status</label>

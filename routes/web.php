@@ -19,8 +19,23 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::middleware('isLoggedInPelamar')->group(function() {
-    Route::get('/', function() {
-        return view('main.dashboard.index');
+    Route::get('/', 'Main\DashboardController@index');
+    Route::get('/detail-lowongan/{id}', 'Main\DashboardController@detailLowongan');
+    Route::post('/proses-lamaran', 'Main\DashboardController@prosesLowongan');
+
+    Route::namespace('Pelamar')->group(function() {
+        // Dokumen Controller
+        Route::controller(DokumenController::class)
+            ->prefix('dokumen')
+            ->as('dokumen.')
+            ->group(function() {
+                Route::get('', 'index')->name('index');
+                Route::get('/render', 'render')->name('render');
+                Route::get('/create', 'create')->name('create');
+                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::post('/store', 'store')->name('store');
+                Route::post('/update', 'update')->name('update');
+        });
     });
 });
 
@@ -57,11 +72,23 @@ Route::middleware('isLoggedInOperator')->group(function() {
                 Route::post('/update', 'update')->name('update');
         });
 
+        // Pelamar Controller
+        Route::controller(PelamarController::class)
+            ->prefix('pelamar')
+            ->as('pelamar.')
+            ->group(function() {
+                Route::get('', 'index')->name('index');
+                Route::get('/render', 'render')->name('render');
+                Route::get('/create', 'create')->name('create');
+                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::post('/store', 'store')->name('store');
+                Route::post('/update', 'update')->name('update');
+        });
+
     });
-    
 });
 
-Route::namespace('Main')->middleware('guest')->group(function() {
+Route::namespace('Main')->middleware('guest:web,weboperator')->group(function() {
     Route::controller(CpanelController::class)
         ->prefix('cpanel')
         ->as('cpanel.')
@@ -78,6 +105,59 @@ Route::namespace('Main')->middleware('guest')->group(function() {
         ->group(function(){
             Route::get('', 'index')->name('index');
             Route::post('/store', 'store')->name('store');
+    });
+});
+
+Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
+    // Lamaran Controller
+    Route::controller(LamaranController::class)
+        ->prefix('lamaran')
+        ->as('lamaran.')
+        ->group(function() {
+            Route::get('', 'index')->name('index');
+            Route::get('/render', 'render')->name('render');
+            Route::post('/update', 'update')->name('update');
+    });
+
+    // Jadwal Controller
+    Route::controller(JadwalController::class)
+        ->prefix('jadwal')
+        ->as('jadwal.')
+        ->group(function() {
+            Route::get('', 'index')->name('index');
+            Route::get('/render', 'render')->name('render');
+            Route::get('/create', 'create')->name('render');
+            Route::post('/store', 'store')->name('render');
+            Route::get('/edit/{id}', 'edit')->name('render');
+            Route::post('/update', 'update')->name('update');
+    });
+
+    // Pra Interview Controller
+    Route::controller(PraInterviewController::class)
+        ->prefix('prainterview')
+        ->as('prainterview.')
+        ->group(function() {
+            Route::get('', 'index')->name('index');
+            Route::get('/render', 'render')->name('render');
+            Route::get('/create', 'create')->name('render');
+            Route::post('/store', 'store')->name('render');
+            Route::get('/edit/{id}', 'edit')->name('render');
+            Route::get('/daftar-posisi-lowongan/{id}', 'daftarPosisi')->name('daftar.posisi');
+            Route::post('/update', 'update')->name('update');
+    });
+
+    // Final Interview Controller
+    Route::controller(FinalInterviewController::class)
+        ->prefix('finalinterview')
+        ->as('finalinterview.')
+        ->group(function() {
+            Route::get('', 'index')->name('index');
+            Route::get('/render', 'render')->name('render');
+            Route::get('/create', 'create')->name('render');
+            Route::post('/store', 'store')->name('render');
+            Route::get('/edit/{id}', 'edit')->name('render');
+            Route::get('/rekomendasi-posisi/{id}', 'rekomendasiPosisi')->name('rekomendasi.posisi');
+            Route::post('/update', 'update')->name('update');
     });
 });
 

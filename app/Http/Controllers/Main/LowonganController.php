@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LowonganRequest;
 use App\Models\Lowongan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Image;
 
 class LowonganController extends Controller
@@ -39,8 +40,9 @@ class LowonganController extends Controller
     {
         try {
             $data = [
-                'user_id' => auth()->user()->id,
+                'user_id' => Auth::guard('weboperator')->user()->id,
                 'nama' => $request->nama,
+                'posisi' => $request->posisi,
                 'deskripsi' => $request->deskripsi,
                 'status' => true
             ];
@@ -77,7 +79,7 @@ class LowonganController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Something went wrong',
+                'message' => $e->getMessage(),
                 'title' => 'Failed'
             ]);
         }
@@ -98,8 +100,9 @@ class LowonganController extends Controller
         try {
             $lowongan = Lowongan::find($request->id);
             $data = [
-                'user_id' => auth()->user()->id,
+                'user_id' => Auth::guard('weboperator')->user()->id,
                 'nama' => $request->nama,
+                'posisi' => $request->posisi,
                 'deskripsi' => $request->deskripsi,
                 'status' => $request->status
             ];
