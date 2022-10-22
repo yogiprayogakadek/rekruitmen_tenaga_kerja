@@ -5,12 +5,14 @@
                 <div class="col-6">
                     Data Pengumuman
                 </div>
+                @if (Auth::guard('weboperator')->user())
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
                     <button type="button" class="btn btn-outline-primary btn-add">
                         <i class="nav-icon i-Pen-2 font-weight-bold"></i> Tambah
                     </button>
                 </div>
+                @endif
             </div>
         </div>
         <div class="card-body">
@@ -19,8 +21,10 @@
                     <th>No</th>
                     <th>Perihal</th>
                     <th>Deskripsi</th>
+                    @if (Auth::guard('weboperator')->user())
                     <th>Status</th>
                     <th>Aksi</th>
+                    @endif
                 </thead>
                 <tbody>
                     @foreach ($pengumuman as $pengumuman)
@@ -28,6 +32,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pengumuman->perihal}}</td>
                         <td>{{$pengumuman->deskripsi}}</td>
+                        @if (Auth::guard('weboperator')->user())
                         <td>{{$pengumuman->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
                             <div class="dropdown d-inline-block">
@@ -45,6 +50,7 @@
                                 </ul>
                             </div>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

@@ -43,21 +43,8 @@ Route::middleware('isLoggedInOperator')->group(function() {
     Route::get('/dashboard', function() {
         return view('main.dashboard.index');
     })->name('dashboard');
-
+    
     Route::namespace('Main')->group(function() {
-
-        // Pengumuman Controller
-        Route::controller(PengumumanController::class)
-            ->prefix('pengumuman')
-            ->as('pengumuman.')
-            ->group(function() {
-                Route::get('', 'index')->name('index');
-                Route::get('/render', 'render')->name('render');
-                Route::get('/create', 'create')->name('create');
-                Route::get('/edit/{id}', 'edit')->name('edit');
-                Route::post('/store', 'store')->name('store');
-                Route::post('/update', 'update')->name('update');
-        });
 
         // Lowongan Controller
         Route::controller(LowonganController::class)
@@ -70,10 +57,10 @@ Route::middleware('isLoggedInOperator')->group(function() {
                 Route::get('/edit/{id}', 'edit')->name('edit');
                 Route::post('/store', 'store')->name('store');
                 Route::post('/update', 'update')->name('update');
-        });
-
-        // Pelamar Controller
-        Route::controller(PelamarController::class)
+            });
+            
+            // Pelamar Controller
+            Route::controller(PelamarController::class)
             ->prefix('pelamar')
             ->as('pelamar.')
             ->group(function() {
@@ -81,6 +68,7 @@ Route::middleware('isLoggedInOperator')->group(function() {
                 Route::get('/render', 'render')->name('render');
                 Route::get('/create', 'create')->name('create');
                 Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/dokumen/{id}', 'dokumen')->name('dokumen');
                 Route::post('/store', 'store')->name('store');
                 Route::post('/update', 'update')->name('update');
         });
@@ -159,6 +147,19 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
             Route::get('/rekomendasi-posisi/{id}', 'rekomendasiPosisi')->name('rekomendasi.posisi');
             Route::post('/update', 'update')->name('update');
     });
+
+    // Pengumuman Controller
+    Route::controller(PengumumanController::class)
+    ->prefix('pengumuman')
+    ->as('pengumuman.')
+    ->group(function() {
+        Route::get('', 'index')->name('index');
+        Route::get('/render', 'render')->name('render');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/store', 'store')->name('store');
+        Route::post('/update', 'update')->name('update');
+});
 });
 
 Auth::routes();

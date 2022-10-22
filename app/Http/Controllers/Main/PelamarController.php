@@ -34,6 +34,25 @@ class PelamarController extends Controller
         return response()->json($view);
     }
 
+    public function dokumen($id)
+    {
+        $pelamar = Pelamar::find($id);
+        $dokumen = json_decode($pelamar->documents);
+        
+        $data = array();
+        foreach($dokumen as $key => $value) {
+            if($value == 'empty') {
+                array_push($data, 'Belum ada data yang di unggah');
+                // $data[] += 'Belum di unggah';
+            } else {
+                array_push($data, asset($value));
+                // $data[] += asset($value);
+            }
+        }
+        // dd($data);
+        return $data;
+    }
+
     // public function update(PengumumanRequest $request)
     // {
     //     try {
@@ -49,8 +68,8 @@ class PelamarController extends Controller
 
     //         return response()->json([
     //             'status' => 'success',
-    //             'message' => 'Data saved successfully',
-    //             'title' => 'Successfully'
+    //             'message' => 'Data berhasil disimpan',
+    //             'title' => 'Berhasil'
     //         ]);
 
     //     } catch (\Exception $e) {

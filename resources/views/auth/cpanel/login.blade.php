@@ -8,8 +8,8 @@
 
             <div class="card-body p-4">
                 <div class="text-center mt-2">
-                    <h5 class="text-primary">Welcome Back !</h5>
-                    <p class="text-muted">Sign in to continue to Velzon.</p>
+                    <h5 class="text-primary">CPANEL</h5>
+                    <p class="text-muted">Rekruitmen Tenaga Kerja</p>
                 </div>
                 <div class="p-2 mt-4">
                     <form role="form" action="{{route('cpanel.login')}}" method="POST">
@@ -41,11 +41,6 @@
             <!-- end card body -->
         </div>
         <!-- end card -->
-
-        <div class="mt-4 text-center">
-            <p class="mb-0">Belum ada akun ? <a href="{{route('registration.index')}}" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
-        </div>
-
     </div>
 </div>
 @endsection

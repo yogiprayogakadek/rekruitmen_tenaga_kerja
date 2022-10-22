@@ -3,14 +3,16 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6">
-                    Data Pra Interview
+                    Data Final Interview
                 </div>
+                @if (Auth::guard('weboperator')->user())
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
                     <button type="button" class="btn btn-outline-primary btn-add">
                         <i class="nav-icon i-Pen-2 font-weight-bold"></i> Tambah
                     </button>
                 </div>
+                @endif
             </div>
         </div>
         <div class="card-body">
@@ -24,8 +26,10 @@
                     <th>Nama Hotel</th>
                     <th>Catatan</th>
                     <th>Hasil</th>
+                    @if (Auth::guard('weboperator')->user())
                     <th>Status</th>
                     <th>Aksi</th>
+                    @endif
                 </thead>
                 <tbody>
                     @foreach ($finalinterview as $finalinterview)
@@ -38,6 +42,7 @@
                         <td>{{$finalinterview->nama_hotel}}</td>
                         <td>{{$finalinterview->catatan}}</td>
                         <td>{{strtoupper($finalinterview->hasil)}}</td>
+                        @if (Auth::guard('weboperator')->user())
                         <td>{{$finalinterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
                             <div class="dropdown d-inline-block">
@@ -49,6 +54,7 @@
                                 </ul>
                             </div>
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>

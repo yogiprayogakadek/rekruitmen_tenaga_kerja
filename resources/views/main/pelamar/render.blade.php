@@ -19,6 +19,7 @@
                     <th>Berat Badan</th>
                     <th>Tinggi Badan</th>
                     <th>Marital Status</th>
+                    <th>Dokumen</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </thead>
@@ -34,6 +35,9 @@
                         <td>{{$pelamar->berat_badan}}</td>
                         <td>{{$pelamar->tinggi_badan}}</td>
                         <td>{{$pelamar->marital_status}}</td>
+                        <td>
+                            <span class="badge bg-primary pointer btn-dokumen" data-id="{{$pelamar->id}}">Lihat</span>
+                        </td>
                         <td>{{$pelamar->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
                             <div class="dropdown d-inline-block">
@@ -55,6 +59,42 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+</div>
+
+{{-- modal upload --}}
+<div class="live-preview">
+    <div>
+        <div class="modal fade" id="modalDokumen" tabindex="-1" role="dialog">
+            <div class="modal-lg modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Dokumen</h5>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover text-center" id="tableDokumen">
+                            <thead>
+                                <tr>
+                                    <th>CV</th>
+                                    <th>Sertifikat Pengalaman Kerja</th>
+                                    <th>Ijazah terakhir</th>
+                                    <th>KTP</th>
+                                    <th>Passport</th>
+                                    <th>SAT</th>
+                                    <th>Crowd</th>
+                                    <th>Crisis</th>
+                                    <th>BST</th>
+                                    <th>Seamenbook</th>
+                                </tr>
+                                <tbody>
+                                    <tr class="dokumen"></tr>
+                                </tbody>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

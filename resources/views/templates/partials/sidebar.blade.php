@@ -34,26 +34,34 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{Request::is('pengumuman') ? 'active' : '' }}" href="{{route('pengumuman.index')}}">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Pengumuman</span>
+                    <a class="nav-link menu-link {{Request::is('dashboard') ? 'active' : '' }}" href="{{route('dashboard')}}">
+                        <i class="las la-home"></i> <span data-key="t-widgets">Dashboard</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('pengumuman') ? 'active' : '' }}" href="{{route('pengumuman.index')}}">
+                        <i class="las la-pager"></i> <span data-key="t-widgets">Pengumuman</span>
+                    </a>
+                </li>
+                @if (Auth::guard('weboperator')->user())
+
+                <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('lowongan') ? 'active' : '' }}" href="{{route('lowongan.index')}}">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Lowongan</span>
+                        <i class="las la-briefcase"></i> <span data-key="t-widgets">Lowongan</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('pelamar') ? 'active' : '' }}" href="{{route('pelamar.index')}}">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Pelamar</span>
+                        <i class="las la-user-circle"></i> <span data-key="t-widgets">Pelamar</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('dokumen') ? 'active' : '' }}" href="{{route('dokumen.index')}}">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Dokumen</span>
+                        <i class="las la-newspaper"></i> <span data-key="t-widgets">Dokumen</span>
                     </a>
                 </li>
 
@@ -65,19 +73,19 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('jadwal') ? 'active' : '' }}" href="{{route('jadwal.index')}}">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Jadwal</span>
+                        <i class="las la-table"></i> <span data-key="t-widgets">Jadwal</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('prainterview') ? 'active' : '' }}" href="{{route('prainterview.index')}}">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Pra Interview</span>
+                        <i class="las la-pencil-ruler"></i> <span data-key="t-widgets">Pra Interview</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('finalinterview') ? 'active' : '' }}" href="{{route('finalinterview.index')}}">
-                        <i class="las la-flask"></i> <span data-key="t-widgets">Final Interview</span>
+                        <i class="las la-pencil-ruler"></i> <span data-key="t-widgets">Final Interview</span>
                     </a>
                 </li>
                 

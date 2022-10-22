@@ -49,8 +49,8 @@ class PengumumanController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Data saved successfully',
-                'title' => 'Successfully'
+                'message' => 'Data berhasil disimpan',
+                'title' => 'Berhasil'
             ]);
 
         } catch (\Exception $e) {
@@ -87,8 +87,8 @@ class PengumumanController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'Data saved successfully',
-                'title' => 'Successfully'
+                'message' => 'Data berhasil disimpan',
+                'title' => 'Berhasil'
             ]);
 
         } catch (\Exception $e) {

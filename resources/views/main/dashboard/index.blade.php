@@ -5,24 +5,53 @@
 @section('content')
     <div class="row">
         @if (!Auth::guard('weboperator')->user())
-        @forelse ($lowongan as $key => $lowongan)
-            <div class="col-sm-6 col-xl-3">
-                {{-- {{Auth::guard('weboperator')->user() ?? Auth::user()}} --}}
-                <!-- Simple card -->
-                <div class="card">
-                    <img class="card-img-top img-fluid" src="{{asset($lowongan->foto)}}">
-                    <div class="card-body">
-                        <h4 class="card-title mb-2">{{$lowongan->nama}}</h4>
-                        {{-- <p class="card-text">At missed advice my it no sister. Miss told ham dull knew see she spot near can. Spirit her entire her called.</p> --}}
-                        <div class="text-end">
-                            <a href="javascript:void(0);" class="btn btn-primary btn-lowongan" data-id="{{$lowongan->id}}">Lihat</a>
+            @forelse ($lowongan as $key => $lowongan)
+                <div class="col-sm-6 col-xl-3">
+                    {{-- {{Auth::guard('weboperator')->user() ?? Auth::user()}} --}}
+                    <!-- Simple card -->
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="{{asset($lowongan->foto)}}">
+                        <div class="card-body">
+                            <h4 class="card-title mb-2">{{$lowongan->nama}}</h4>
+                            {{-- <p class="card-text">At missed advice my it no sister. Miss told ham dull knew see she spot near can. Spirit her entire her called.</p> --}}
+                            <div class="text-end">
+                                <a href="javascript:void(0);" class="btn btn-primary btn-lowongan" data-id="{{$lowongan->id}}">Lihat</a>
+                            </div>
                         </div>
-                    </div>
-                </div><!-- end card -->
+                    </div><!-- end card -->
+                </div>
+            @empty
+                <h4>Data Kosong</h4>
+            @endforelse
+        @else
+            @foreach (model() as $key => $value)
+            <div class="col-4">
+                <div class="card card-animate">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <p class="fw-medium text-muted mb-0">{{$value}}</p>
+                                <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="{{total_data_model($key)}}">{{total_data_model($key)}}</span></h2>
+                                <p class="mb-0 text-muted">
+                                    <a href="{{route(route_to_model()[$key])}}">
+                                        <span class="badge bg-light text-success mb-0">
+                                            <i class="ri-arrow-right-line align-middle"></i>
+                                        </span> Lihat lebih lengkap
+                                    </a>
+                                </p>
+                            </div>
+                            <div>
+                                <div class="avatar-sm flex-shrink-0">
+                                    <span class="avatar-title bg-soft-info rounded-circle fs-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users text-info"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end card body -->
+                </div>
             </div>
-        @empty
-            <h4>Data Kosong</h4>
-        @endforelse
+            @endforeach
         @endif
     </div>
 

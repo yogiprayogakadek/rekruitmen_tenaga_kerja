@@ -170,4 +170,15 @@ $(document).ready(function () {
         });
     });
 
+    $('body').on('click', '.btn-dokumen', function() {
+        let id = $(this).data('id')
+        $('.dokumen').empty();
+        $('#modalDokumen').modal('show')
+        $.get("pelamar/dokumen/"+id, function (data) {
+            $.each(data, function (index, value) { 
+                let td = '<td>' + (value == 'Belum ada data yang di unggah' ? '-' : '<a href="'+value+'">Lihat</a>') + '</td>';
+                $('.dokumen').append(td)
+            });
+        });
+    })
 });
