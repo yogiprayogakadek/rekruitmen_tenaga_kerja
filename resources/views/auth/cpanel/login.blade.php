@@ -44,3 +44,18 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+<script>
+    $(document).ready(function () {
+        @if (session('status') == 'error')
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+        toastr.error("{{ session('message') }}");
+        @endif
+    });
+</script>
+@endpush

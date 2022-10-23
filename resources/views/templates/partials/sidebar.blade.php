@@ -45,7 +45,6 @@
                     </a>
                 </li>
                 @if (Auth::guard('weboperator')->user())
-
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('lowongan') ? 'active' : '' }}" href="{{route('lowongan.index')}}">
                         <i class="las la-briefcase"></i> <span data-key="t-widgets">Lowongan</span>
@@ -53,14 +52,16 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{Request::is('petugas') ? 'active' : '' }}" href="{{route('petugas.index')}}">
-                        <i class="las la-user-circle"></i> <span data-key="t-widgets">Petugas</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('pelamar') ? 'active' : '' }}" href="{{route('pelamar.index')}}">
                         <i class="las la-user-circle"></i> <span data-key="t-widgets">Pelamar</span>
+                    </a>
+                </li>
+                @endif
+
+                @if (Auth::guard('weboperator')->user()->role == 'Manajer')
+                <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('petugas') ? 'active' : '' }}" href="{{route('petugas.index')}}">
+                        <i class="las la-user-circle"></i> <span data-key="t-widgets">Petugas</span>
                     </a>
                 </li>
                 @endif

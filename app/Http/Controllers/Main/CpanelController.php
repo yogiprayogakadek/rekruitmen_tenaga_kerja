@@ -15,11 +15,16 @@ class CpanelController extends Controller
 
     public function handleLogin(Request $req)
     {
-        if(Auth::guard('weboperator')
-            ->attempt($req->only(['username', 'password'])))
+        if(Auth::guard('weboperator')->attempt($req->only(['username', 'password'])))
         {
-            return redirect()
-                ->route('dashboard');
+            if(Auth::guard('weboperator')->user()->status == false) {
+                Auth::guard('weboperator')->logout();
+                return redirect()->route('cpanel.index')->with([
+                    'status' => 'error',
+                    'message' => 'Anda sudah tidak aktif'
+                ]);
+            }
+            return redirect()->route('dashboard');
         }
 
         return redirect()

@@ -108,7 +108,7 @@ class PetugasController extends Controller
                 'tempat_lahir' => $request->tempat_lahir,
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'role' => 'Petugas',
-                'status' => true
+                'status' => $request->status
             ];
 
             if($request->hasFile('foto')) {
