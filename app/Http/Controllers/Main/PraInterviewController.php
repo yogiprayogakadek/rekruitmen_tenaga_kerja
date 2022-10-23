@@ -142,4 +142,13 @@ class PraInterviewController extends Controller
             ]);
         }
     }
+
+    public function print()
+    {
+        $prainterview = PraInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->get();
+        $view = [
+            'data' => view('main.prainterview.print', compact('prainterview'))->render()
+        ];
+        return response()->json($view);
+    }
 }

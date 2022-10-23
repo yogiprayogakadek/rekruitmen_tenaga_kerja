@@ -4,7 +4,7 @@
         <!-- Dark Logo-->
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
                 <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
@@ -13,7 +13,7 @@
         <!-- Light Logo-->
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
                 <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="17">
@@ -53,17 +53,25 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link menu-link {{Request::is('petugas') ? 'active' : '' }}" href="{{route('petugas.index')}}">
+                        <i class="las la-user-circle"></i> <span data-key="t-widgets">Petugas</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('pelamar') ? 'active' : '' }}" href="{{route('pelamar.index')}}">
                         <i class="las la-user-circle"></i> <span data-key="t-widgets">Pelamar</span>
                     </a>
                 </li>
                 @endif
 
+                @if (Auth::user())
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('dokumen') ? 'active' : '' }}" href="{{route('dokumen.index')}}">
                         <i class="las la-newspaper"></i> <span data-key="t-widgets">Dokumen</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('lamaran') ? 'active' : '' }}" href="{{route('lamaran.index')}}">

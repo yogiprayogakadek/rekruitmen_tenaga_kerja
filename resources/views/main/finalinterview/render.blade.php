@@ -8,6 +8,9 @@
                 @if (Auth::guard('weboperator')->user())
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
+                    <button style="margin-right: 5px" type="button" class="btn btn-outline-success btn-print">
+                        <i class="fa fa-print fa-1x"></i>
+                    </button>
                     <button type="button" class="btn btn-outline-primary btn-add">
                         <i class="nav-icon i-Pen-2 font-weight-bold"></i> Tambah
                     </button>

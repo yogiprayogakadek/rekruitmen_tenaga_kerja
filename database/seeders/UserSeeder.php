@@ -16,15 +16,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'nama' => 'Administrator',
-            'email' => 'admin@gmail.com',
+            'nama' => 'Manajer',
+            'email' => 'manajer@gmail.com',
             'telepon' => '082237188923',
             'tempat_lahir' => 'Denpasar',
             'tanggal_lahir' => '1998/12/15',
-            'username' => 'admin',
+            'username' => 'manajer',
             'password' => bcrypt(12345678),
-            'foto' => 'assets/user/image/default.png',
-            'role' => 'Petugas',
+            'foto' => 'assets/uploads/images/default.png',
+            'role' => 'Manajer',
             'status' => true
         ]);
     }

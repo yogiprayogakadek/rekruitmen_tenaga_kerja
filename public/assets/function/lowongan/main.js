@@ -170,4 +170,34 @@ $(document).ready(function () {
         });
     });
 
+    $('body').on('click', '.btn-print', function () {
+        Swal.fire({
+            title: 'Cetak data lowongan?',
+            text: "Laporan akan dicetak",
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, cetak!'
+        }).then((result) => {
+            if (result.value) {
+                var mode = "iframe"; //popup
+                var close = mode == "popup";
+                var options = {
+                    mode: mode,
+                    popClose: close,
+                    popTitle: 'Rekruitmen Tenaga Kerja',
+                };
+                $.ajax({
+                    type: "GET",
+                    url: "lowongan/print",
+                    dataType: "json",
+                    success: function (response) {
+                        document.title= 'Laporan - ' + new Date().toJSON().slice(0,10).replace(/-/g,'/')
+                        $(response.data).find("div.printableArea").printArea(options);
+                    }
+                });
+            }
+        })
+    });
 });

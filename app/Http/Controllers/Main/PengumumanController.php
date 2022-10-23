@@ -18,7 +18,6 @@ class PengumumanController extends Controller
     public function render()
     {
         $pengumuman = Pengumuman::all();
-
         $view = [
             'data' => view('main.pengumuman.render', compact('pengumuman'))->render(),
         ];

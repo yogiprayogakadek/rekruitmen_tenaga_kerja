@@ -53,6 +53,17 @@ class PelamarController extends Controller
         return $data;
     }
 
+    public function print()
+    {
+        $pelamar = Pelamar::all();
+
+        $view = [
+            'data' => view('main.pelamar.print', compact('pelamar'))->render(),
+        ];
+
+        return response()->json($view);
+    }
+
     // public function update(PengumumanRequest $request)
     // {
     //     try {

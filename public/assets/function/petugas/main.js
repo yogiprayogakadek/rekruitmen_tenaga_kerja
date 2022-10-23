@@ -1,7 +1,7 @@
 function getData() {
     $.ajax({
         type: "get",
-        url: "/finalinterview/render",
+        url: "/petugas/render",
         dataType: "json",
         success: function (response) {
             $(".render").html(response.data);
@@ -15,11 +15,10 @@ function getData() {
 function tambah() {
     $.ajax({
         type: "get",
-        url: "/finalinterview/create",
+        url: "/petugas/create",
         dataType: "json",
         success: function (response) {
             $(".render").html(response.data);
-            $('body').find('.will-show').hide()
         },
         error: function (error) {
             console.log("Error", error);
@@ -49,7 +48,7 @@ $(document).ready(function () {
         let data = new FormData(form)
         $.ajax({
             type: "POST",
-            url: "/finalinterview/store",
+            url: "/petugas/store",
             data: data,
             processData: false,
             contentType: false,
@@ -101,7 +100,7 @@ $(document).ready(function () {
         let id = $(this).data('id')
         $.ajax({
             type: "get",
-            url: "/finalinterview/edit/" + id,
+            url: "/petugas/edit/" + id,
             dataType: "json",
             success: function (response) {
                 $(".render").html(response.data);
@@ -123,7 +122,7 @@ $(document).ready(function () {
         let data = new FormData(form)
         $.ajax({
             type: "POST",
-            url: "/finalinterview/update",
+            url: "/petugas/update",
             data: data,
             processData: false,
             contentType: false,
@@ -169,53 +168,6 @@ $(document).ready(function () {
                 }
             }
         });
-    });
-
-    $('body').on('change', '.jadwal', function() {
-        $('.posisi').empty();
-        let jadwal = $(this).val();
-        if(jadwal == '') {
-            $('.will-show').hide()
-        } else {
-            $('.will-show').show();
-            $.get("finalinterview/rekomendasi-posisi/"+jadwal, function (data) {
-                $('.rekomendasi').val(data.jadwal.prainterview.rekomendasi)
-                $.each(data.posisi, function (index, value) { 
-                    $('.posisi').append('<option value='+value+'>'+value+'</option>')
-                });
-            });
-        }
-    }); 
-
-    $('body').on('click', '.btn-print', function () {
-        Swal.fire({
-            title: 'Cetak data final interview?',
-            text: "Laporan akan dicetak",
-            icon: 'success',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, cetak!'
-        }).then((result) => {
-            if (result.value) {
-                var mode = "iframe"; //popup
-                var close = mode == "popup";
-                var options = {
-                    mode: mode,
-                    popClose: close,
-                    popTitle: 'Rekruitmen Tenaga Kerja',
-                };
-                $.ajax({
-                    type: "GET",
-                    url: "final/print",
-                    dataType: "json",
-                    success: function (response) {
-                        document.title= 'Laporan - ' + new Date().toJSON().slice(0,10).replace(/-/g,'/')
-                        $(response.data).find("div.printableArea").printArea(options);
-                    }
-                });
-            }
-        })
     });
 
 });

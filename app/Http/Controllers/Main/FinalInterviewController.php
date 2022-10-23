@@ -127,7 +127,6 @@ class FinalInterviewController extends Controller
 
             $final->update([
                 'user_id' => Auth::guard('weboperator')->user()->id,
-                'user_id' => Auth::guard('weboperator')->user()->id,
                 'jadwal_id' => $request->jadwal,
                 'posisi' => $request->posisi,
                 'nama_kapal' => $request->kapal,
@@ -148,5 +147,14 @@ class FinalInterviewController extends Controller
                 'title' => 'Gagal'
             ]);
         }
+    }
+
+    public function print()
+    {
+        $finalinterview = FinalInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->get();
+        $view = [
+            'data' => view('main.finalinterview.print', compact('finalinterview'))->render()
+        ];
+        return response()->json($view);
     }
 }

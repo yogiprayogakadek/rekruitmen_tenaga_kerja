@@ -3,13 +3,10 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6">
-                    Data Lowongan
+                    Data Petugas
                 </div>
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
-                    <button style="margin-right: 5px" type="button" class="btn btn-outline-success btn-print">
-                        <i class="fa fa-print fa-1x"></i>
-                    </button>
                     <button type="button" class="btn btn-outline-primary btn-add">
                         <i class="nav-icon i-Pen-2 font-weight-bold"></i> Tambah
                     </button>
@@ -20,37 +17,29 @@
             <table class="table table-hover table-striped" id="tableData">
                 <thead>
                     <th>No</th>
-                    <th>Nama Lowongan</th>
-                    <th>Posisi</th>
+                    <th>Nama</th>
+                    <th>Telepon</th>
+                    <th>Tempat, Tanggal Lahir</th>
                     <th>Foto</th>
-                    <th>Deskripsi</th>
-                    <th>Petugas</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </thead>
                 <tbody>
-                    @foreach ($lowongan as $lowongan)
+                    @foreach ($petugas as $petugas)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$lowongan->nama}}</td>
-                        <td>
-                            @foreach (explode(',', $lowongan->posisi) as $item)
-                                <ul><li>{{$item}}</li></ul>
-                            @endforeach
-                        </td>
-                        <td>
-                            <img src="{{asset($lowongan->foto)}}" width="150px">
-                        </td>
-                        <td>{{$lowongan->deskripsi}}</td>
-                        <td>{{$lowongan->user->nama}}</td>
-                        <td>{{$lowongan->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
+                        <td>{{$petugas->nama}}</td>
+                        <td>{{$petugas->telepon}}</td>
+                        <td>{{$petugas->tempat_lahir}}, {{$petugas->tanggal_lahir}}</td>
+                        <td><img src="{{$petugas->foto}}" width="70px"></td>
+                        <td>{{$petugas->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
                             <div class="dropdown d-inline-block">
                                 <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="ri-more-fill align-middle"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item btn-edit" data-id="{{$lowongan->id}}"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</button></li>
+                                    <li><button class="dropdown-item btn-edit" data-id="{{$petugas->id}}"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</button></li>
                                 </ul>
                             </div>
                         </td>

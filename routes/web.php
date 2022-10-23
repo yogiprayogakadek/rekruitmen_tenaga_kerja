@@ -46,6 +46,19 @@ Route::middleware('isLoggedInOperator')->group(function() {
     
     Route::namespace('Main')->group(function() {
 
+        // Petugas Controller
+        Route::controller(PetugasController::class)
+            ->prefix('petugas')
+            ->as('petugas.')
+            ->group(function() {
+                Route::get('', 'index')->name('index');
+                Route::get('/render', 'render')->name('render');
+                Route::get('/create', 'create')->name('create');
+                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::post('/store', 'store')->name('store');
+                Route::post('/update', 'update')->name('update');
+            });
+
         // Lowongan Controller
         Route::controller(LowonganController::class)
             ->prefix('lowongan')
@@ -55,6 +68,7 @@ Route::middleware('isLoggedInOperator')->group(function() {
                 Route::get('/render', 'render')->name('render');
                 Route::get('/create', 'create')->name('create');
                 Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::get('/print', 'print')->name('print');
                 Route::post('/store', 'store')->name('store');
                 Route::post('/update', 'update')->name('update');
             });
@@ -69,6 +83,7 @@ Route::middleware('isLoggedInOperator')->group(function() {
                 Route::get('/create', 'create')->name('create');
                 Route::get('/edit/{id}', 'edit')->name('edit');
                 Route::get('/dokumen/{id}', 'dokumen')->name('dokumen');
+                Route::get('/print', 'print')->name('print');
                 Route::post('/store', 'store')->name('store');
                 Route::post('/update', 'update')->name('update');
         });
@@ -114,9 +129,9 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
         ->group(function() {
             Route::get('', 'index')->name('index');
             Route::get('/render', 'render')->name('render');
-            Route::get('/create', 'create')->name('render');
-            Route::post('/store', 'store')->name('render');
-            Route::get('/edit/{id}', 'edit')->name('render');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
             Route::post('/update', 'update')->name('update');
     });
 
@@ -127,9 +142,10 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
         ->group(function() {
             Route::get('', 'index')->name('index');
             Route::get('/render', 'render')->name('render');
-            Route::get('/create', 'create')->name('render');
-            Route::post('/store', 'store')->name('render');
-            Route::get('/edit/{id}', 'edit')->name('render');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::get('/print', 'print')->name('print');
             Route::get('/daftar-posisi-lowongan/{id}', 'daftarPosisi')->name('daftar.posisi');
             Route::post('/update', 'update')->name('update');
     });
@@ -141,9 +157,10 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
         ->group(function() {
             Route::get('', 'index')->name('index');
             Route::get('/render', 'render')->name('render');
-            Route::get('/create', 'create')->name('render');
-            Route::post('/store', 'store')->name('render');
-            Route::get('/edit/{id}', 'edit')->name('render');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::get('/print', 'print')->name('print');
             Route::get('/rekomendasi-posisi/{id}', 'rekomendasiPosisi')->name('rekomendasi.posisi');
             Route::post('/update', 'update')->name('update');
     });

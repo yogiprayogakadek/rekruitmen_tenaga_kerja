@@ -6,7 +6,7 @@
                 <div class="navbar-brand-box horizontal-logo">
                     <a href="index.html" class="logo logo-dark">
                         <span class="logo-sm">
-                            <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                            <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
                             <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
@@ -15,7 +15,7 @@
 
                     <a href="index.html" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                            <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
                         </span>
                         <span class="logo-lg">
                             <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="17">
@@ -41,7 +41,7 @@
                         aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="rounded-circle header-profile-user"
-                                src="{{asset('assets/images/users/avatar-1.jpg')}}" alt="Header Avatar">
+                                src="{{Auth::guard('weboperator')->user() != null ? Auth::guard('weboperator')->user()->foto : Auth::user()->foto}}" alt="Header Avatar">
                             <span class="text-start ms-xl-2">
                                 {{-- @if (Auth::guard('weboperator')->user()) --}}
                                 <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">

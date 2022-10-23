@@ -5,6 +5,14 @@
                 <div class="col-6">
                     Data Pelamar
                 </div>
+                @if (Auth::guard('weboperator')->user())
+                <div class="col-6 d-flex align-items-center">
+                    <div class="m-auto"></div>
+                    <button type="button" class="btn btn-outline-primary btn-print">
+                        <i class="fa fa-print fa-1x"></i>
+                    </button>
+                </div>
+                @endif
             </div>
         </div>
         <div class="card-body">

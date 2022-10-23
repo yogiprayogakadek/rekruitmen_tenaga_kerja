@@ -10,7 +10,7 @@
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('assets/uploads/images/logo.png')}}">
 
     <!-- Layout config Js -->
     <script src="{{asset('assets/js/layout.js')}}"></script>
@@ -39,7 +39,7 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="index.html" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                                    <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
                                     <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
@@ -48,7 +48,7 @@
 
                             <a href="index.html" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                                    <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
                                     <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="17">
@@ -102,7 +102,7 @@
                 <!-- Dark Logo-->
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                        <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
@@ -111,7 +111,7 @@
                 <!-- Light Logo-->
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{asset('assets/images/logo-sm.png')}}" alt="" height="22">
+                        <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
                     </span>
                     <span class="logo-lg">
                         <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="17">
