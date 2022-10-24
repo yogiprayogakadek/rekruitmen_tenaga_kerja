@@ -20,13 +20,11 @@ use App\Models\Pengumuman;
         return $data;
     }
 
-    function total_data_model() {
+    function total_data_model($model) {
         $total = 0;
         
-        foreach(model() as $key => $value) {
-            $a = 'App\Models\\' . $value;
-            $total = $a::count();
-        }
+        $a = 'App\Models\\' . $model;
+        $total = $a::count();
         
         return $total;
     }

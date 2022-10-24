@@ -31,7 +31,7 @@
                         <div class="d-flex justify-content-between">
                             <div>
                                 <p class="fw-medium text-muted mb-0">{{$value}}</p>
-                                <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="{{total_data_model($key)}}">{{total_data_model($key)}}</span></h2>
+                                <h2 class="mt-4 ff-secondary fw-semibold"><span class="counter-value" data-target="{{total_data_model($value)}}">{{total_data_model($value)}}</span></h2>
                                 <p class="mb-0 text-muted">
                                     <a href="{{route(route_to_model()[$key])}}">
                                         <span class="badge bg-light text-success mb-0">
