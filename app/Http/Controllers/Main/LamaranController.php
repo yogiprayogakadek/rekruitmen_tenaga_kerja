@@ -42,7 +42,8 @@ class LamaranController extends Controller
             $lamaran = Lamaran::find($request->lamaran_id);
             $lamaran->update([
                 'user_id' => Auth::guard('weboperator')->user()->id,
-                'status' => $request->status
+                'status' => $request->status,
+                'keterangan' => $request->keterangan,
             ]);
 
             return response()->json([

@@ -9,7 +9,7 @@
                 <div class="col-sm-6 col-xl-3">
                     {{-- {{Auth::guard('weboperator')->user() ?? Auth::user()}} --}}
                     <!-- Simple card -->
-                    <div class="card">
+                    <div class="card h-100">
                         <img class="card-img-top img-fluid" src="{{asset($lowongan->foto)}}">
                         <div class="card-body">
                             <h4 class="card-title mb-2">{{$lowongan->nama}}</h4>

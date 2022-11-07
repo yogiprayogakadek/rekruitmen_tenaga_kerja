@@ -40,6 +40,10 @@ class JadwalController extends Controller
     public function create()
     {
         $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
+        // $lamaran = Lamaran::with(['lowongan' => function($query) {
+        //     $query->where('status', true);
+        // }], 'pelamar')->where('status', true)->get();
+        // dd($lamaran);
         $view = [
             'data' => view('main.jadwal.create', compact('lamaran'))->render()
         ];
@@ -53,16 +57,24 @@ class JadwalController extends Controller
             $lamaran = Lamaran::find($request->lamaran);
             $jadwal = Jadwal::where('lamaran_id', $lamaran->id)->where('status', true)->first();
             if(!$jadwal) {
-                Jadwal::create([
-                    'user_id' => Auth::guard('weboperator')->user()->id,
-                    'lamaran_id' => $lamaran->id,
-                    'tanggal_prainterview' => $request->prainterview
-                ]);
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'Data berhasil disimpan',
-                    'title' => 'Berhasil'
-                ]);
+                if($lamaran->lowongan->status == true) {
+                    Jadwal::create([
+                        'user_id' => Auth::guard('weboperator')->user()->id,
+                        'lamaran_id' => $lamaran->id,
+                        'tanggal_prainterview' => $request->prainterview
+                    ]);
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Data berhasil disimpan',
+                        'title' => 'Berhasil'
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Data gagal dibuat dikarenakan lowongan sudah tidak aktif',
+                        'title' => 'Gagal'
+                    ]);
+                }
             } else {
                 return response()->json([
                     'status' => 'info',

@@ -66,13 +66,14 @@
                 </li>
                 @endif
 
-                @if (!in_array(Auth::guard('weboperator')->user()->role, ['Petugas', 'Manajer']))
+
+                {{-- @if (Auth::guard('weboperator')->user()->role == 'Pelamar') --}}
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('dokumen') ? 'active' : '' }}" href="{{route('dokumen.index')}}">
                         <i class="las la-newspaper"></i> <span data-key="t-widgets">Dokumen</span>
                     </a>
                 </li>
-                @endif
+                {{-- @endif --}}
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('lamaran') ? 'active' : '' }}" href="{{route('lamaran.index')}}">

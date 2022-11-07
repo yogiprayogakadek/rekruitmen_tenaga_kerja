@@ -141,7 +141,7 @@ class LowonganController extends Controller
             return response()->json([
                 'status' => 'error',
                 // 'message' => 'Something went wrong',
-                'message' => 'Something went wrong',
+                'message' => $e->getMessage(),
                 'title' => 'Failed'
             ]);
         }

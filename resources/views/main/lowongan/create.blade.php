@@ -29,12 +29,13 @@
                 </div>
                 <div class="form-group mt-3">
                     <label for="deskripsi">Deskripsi</label>
-                    <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" placeholder="masukkan deskripsi"></textarea>
+                    <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" placeholder="masukkan keterangan tentang pekerjaan seperti syarat, jumlah lowongan dan benefit"></textarea>
                     <div class="invalid-feedback error-deskripsi"></div>
                 </div>
-                <div class="form-group">
-                    <label for="foto">Foto</label>
+                <div class="form-group mt-3">
+                    <label for="foto">Gambar (jpg,png,jpeg)</label>
                     <input type="file" class="form-control foto" name="foto" id="foto">
+                    <span class="text-small">masukan gambar atau poster dari lowongan kerja</span>
                     <div class="invalid-feedback error-foto"></div>
                 </div>
             </div>

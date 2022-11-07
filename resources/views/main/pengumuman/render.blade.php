@@ -5,7 +5,7 @@
                 <div class="col-6">
                     Data Pengumuman
                 </div>
-                @if (Auth::guard('weboperator')->user())
+                @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
                     <button type="button" class="btn btn-outline-primary btn-add">
@@ -21,7 +21,9 @@
                     <th>No</th>
                     <th>Perihal</th>
                     <th>Deskripsi</th>
-                    @if (Auth::guard('weboperator')->user())
+                    <th>Tanggal Pembuatan</th>
+                    <th>Tanggal Pembaruan</th>
+                    @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                     <th>Status</th>
                     <th>Aksi</th>
                     @endif
@@ -32,23 +34,26 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pengumuman->perihal}}</td>
                         <td>{{$pengumuman->deskripsi}}</td>
-                        @if (Auth::guard('weboperator')->user())
+                        <td>{{$pengumuman->created_at->format('d/m/y H:i')}}</td>
+                        <td>{{$pengumuman->updated_at->format('d/m/y H:i')}}</td>
+                        @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                         <td>{{$pengumuman->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
-                            <div class="dropdown d-inline-block">
-                                <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-primary btn-edit" data-id="{{$pengumuman->id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
+                            {{-- <div class="dropdown d-inline-block"> --}}
+                                {{-- <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="ri-more-fill align-middle"></i>
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
+                                </button> --}}
+                                {{-- <ul class="dropdown-menu dropdown-menu-end"> --}}
                                     {{-- <li><a href="#!" class="dropdown-item"><i class="ri-eye-fill align-bottom me-2 text-muted"></i> View</a></li> --}}
-                                    <li><button class="dropdown-item btn-edit" data-id="{{$pengumuman->id}}"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</button></li>
+                                    {{-- <li><button class="dropdown-item btn-edit" data-id="{{$pengumuman->id}}"><i class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</button></li> --}}
                                     {{-- <li>
                                         <a class="dropdown-item remove-item-btn">
                                             <i class="ri-delete-bin-fill align-bottom me-2 text-muted"></i> Delete
                                         </a>
                                     </li> --}}
-                                </ul>
-                            </div>
+                                {{-- </ul> --}}
+                            {{-- </div> --}}
                         </td>
                         @endif
                     </tr>

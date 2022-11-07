@@ -15,6 +15,8 @@
                     <th>Posisi</th>
                     <th>Tanggal Daftar</th>
                     <th>Status</th>
+                    <th>Keterangan</th>
+                    <th>Tanggal Update</th>
                 </thead>
                 <tbody>
                     @foreach ($lamaran as $lamaran)
@@ -22,8 +24,18 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$lamaran->lowongan->nama}}</td>
                         <td>{{$lamaran->posisi}}</td>
-                        <td>{{$lamaran->created_at->format('d M Y')}}</td>
-                        <td>{{$lamaran->status == null ? 'Menunggu validasi' : ($lamaran->status == 1 ? 'Diterima' : 'Ditolak')}}</td>
+                        <td>{{$lamaran->created_at->format('d-m-Y')}}</td>
+                        @if ($lamaran->status == 0)
+                            Ditolak
+                            @elseif ($lamaran->status == 1)
+                            Diterima
+                            @elseif ($lamaran->status == 2)
+                            Dipending
+                            @else
+                            Menunggu Validasi
+                            @endif
+                        <td>{{$lamaran->keterangan ?? '-'}}</td>
+                        <td>{{$lamaran->updated_at->format('d-m-Y')}}</td>
                     </tr>
                     @endforeach
                 </tbody>

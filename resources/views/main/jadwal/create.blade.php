@@ -20,7 +20,9 @@
                     <label for="lamaran">Lamaran</label>
                     <select name="lamaran" id="lamaran" class="form-select lamaran">
                         @foreach ($lamaran as $lamaran)
+                            {{-- @if ($lamaran->lowongan != null) --}}
                             <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option>
+                            {{-- @endif --}}
                         @endforeach
                     </select>
                     <div class="invalid-feedback error-lamaran"></div>
