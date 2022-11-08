@@ -70,6 +70,7 @@
                     </div>
                     <form id="formStatus">
                         @csrf
+                        @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                         <div class="modal-body">
                             <div class="form-group">
                                 <input type="hidden" name="lamaran_id" id="lamaran-id">
@@ -89,6 +90,9 @@
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
                             <button type="button" class="btn btn-primary btn-update">Simpan</button>
                         </div>
+                        @else
+                        <h3>Tidak bisa mengubah</h3>
+                        @endif
                     </form>
                 </div>
             </div>

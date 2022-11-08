@@ -50,6 +50,7 @@
                     <div class="invalid-feedback error-status"></div>
                 </div>
             </div>
+            @if (Auth::guard('weboperator')->user()->role == 'Petugas')
             <div class="card-footer">
                 <div class="mc-footer">
                     <div class="row">
@@ -60,6 +61,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </form>
 </div>

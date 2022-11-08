@@ -19,6 +19,8 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Telepon</th>
+                    {{-- <th>Alamat</th> --}}
+                    <th>Email</th>
                     {{-- <th>Tempat, Tanggal Lahir</th> --}}
                     <th>Foto</th>
                     <th>Status</th>
@@ -30,6 +32,8 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$petugas->nama}}</td>
                         <td>{{$petugas->telepon}}</td>
+                        {{-- <td>{{$petugas->alamat}}</td> --}}
+                        <td>{{$petugas->email}}</td>
                         {{-- <td>{{$petugas->tempat_lahir}}, {{$petugas->tanggal_lahir}}</td> --}}
                         <td><img src="{{$petugas->foto}}" width="70px"></td>
                         <td>{{$petugas->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>

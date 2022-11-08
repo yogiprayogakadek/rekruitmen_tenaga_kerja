@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Models\Pelamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PelamarController extends Controller
 {
@@ -64,34 +65,33 @@ class PelamarController extends Controller
         return response()->json($view);
     }
 
-    // public function update(PengumumanRequest $request)
-    // {
-    //     try {
-    //         $pengumuman = pengumuman::find($request->id);
-    //         $data = [
-    //             'user_id' => Auth::guard('weboperator')->user()->id,
-    //             'perihal' => $request->perihal,
-    //             'deskripsi' => $request->deskripsi,
-    //             'status' => $request->status
-    //         ];
+    public function update(Request $request)
+    {
+        try {
+            $pelamar = Pelamar::find($request->pelamar_id);
+            $data = [
+                'user_id' => Auth::guard('weboperator')->user()->id,
+                'email' => $request->email,
+                'telepon' => $request->telepon
+            ];
 
-    //         $pengumuman->update($data);
+            $pelamar->update($data);
 
-    //         return response()->json([
-    //             'status' => 'success',
-    //             'message' => 'Data berhasil disimpan',
-    //             'title' => 'Berhasil'
-    //         ]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data berhasil disimpan',
+                'title' => 'Berhasil'
+            ]);
 
-    //     } catch (\Exception $e) {
-    //         return response()->json([
-    //             'status' => 'error',
-    //             // 'message' => 'Something went wrong',
-    //             'message' => 'Something went wrong',
-    //             'title' => 'Failed'
-    //         ]);
-    //     }
-    // }
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                // 'message' => 'Something went wrong',
+                'message' => 'Data gagal disimpan',
+                'title' => 'Failed'
+            ]);
+        }
+    }
 
 }
 
