@@ -58,10 +58,14 @@ class JadwalController extends Controller
             $jadwal = Jadwal::where('lamaran_id', $lamaran->id)->where('status', true)->first();
             if(!$jadwal) {
                 if($lamaran->lowongan->status == true) {
+                    $waktu = $request->jam . ':' . $request->menit;
                     Jadwal::create([
                         'user_id' => Auth::guard('weboperator')->user()->id,
                         'lamaran_id' => $lamaran->id,
-                        'tanggal_prainterview' => $request->prainterview
+                        'tanggal_prainterview' => $request->prainterview,
+                        'lokasi_prainterview' => $request->lokasi,
+                        'keterangan' => $request->keterangan,
+                        'jam_prainterview' => $waktu
                     ]);
                     return response()->json([
                         'status' => 'success',
@@ -118,13 +122,21 @@ class JadwalController extends Controller
                     ]);
                 }
             }
-
+            
+            $waktu_prainterview = $request->jam . ':' . $request->menit;
+            $waktu_finalinterview = $request->jam_final . ':' . $request->menit_final;
             $jadwal->update([
                 'user_id' => Auth::guard('weboperator')->user()->id,
                 'lamaran_id' => $lamaran->id,
                 'tanggal_prainterview' => $request->prainterview,
                 'tanggal_finalinterview' => $request->finalinterview,
-                'status' => $request->status
+                'status' => $request->status,
+                'keterangan' => $request->keterangan,
+
+                'lokasi_prainterview' => $request->lokasi,
+                'jam_prainterview' => $waktu_prainterview,
+                'lokasi_finalinterview' => $request->lokasi_final,
+                'jam_finalinterview' => $waktu_finalinterview,
             ]);
             return response()->json([
                 'status' => 'success',

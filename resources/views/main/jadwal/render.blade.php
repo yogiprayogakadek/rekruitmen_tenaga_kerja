@@ -23,7 +23,12 @@
                     <th>Pelamar</th>
                     <th>Posisi</th>
                     <th>Tanggal Pra Interview</th>
+                    <th>Lokasi Prainterview</th>
+                    <th>Jam Prainterview</th>
+
                     <th>Tanggal Final Interview</th>
+                    <th>Lokasi Final Interview</th>
+                    <th>Jam Final Interview</th>
                     @if (Auth::guard('weboperator')->user())
                     <th>Status</th>
                     <th>Aksi</th>
@@ -37,7 +42,12 @@
                         <td>{{$jadwal->lamaran->pelamar->nama}}</td>
                         <td>{{$jadwal->lamaran->posisi}}</td>
                         <td>{{$jadwal->tanggal_prainterview}}</td>
+                        <td>{{$jadwal->lokasi_prainterview}}</td>
+                        <td>{{$jadwal->jam_prainterview}}</td>
+                        
                         <td>{{$jadwal->tanggal_finalinterview == '' ? 'Belum diatur' : $jadwal->tanggal_finalinterview}}</td>
+                        <td>{{$jadwal->lokasi_finalinterview == '' ? 'Belum diatur' : $jadwal->lokasi_finalinterview}}</td>
+                        <td>{{$jadwal->jam_finalinterview == '' ? 'Belum diatur' : $jadwal->jam_finalinterview}}</td>
                         @if (Auth::guard('weboperator')->user())
                         <td>{{$jadwal->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>

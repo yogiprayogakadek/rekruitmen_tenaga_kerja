@@ -79,6 +79,7 @@ class FinalInterviewController extends Controller
                     'nama_hotel' => $request->hotel,
                     'catatan' => $request->catatan,
                     'hasil' => $request->hasil,
+                    'penempatan' => $request->penempatan,
                 ]);
                 return response()->json([
                     'status' => 'success',
@@ -133,7 +134,8 @@ class FinalInterviewController extends Controller
                 'nama_hotel' => $request->hotel,
                 'catatan' => $request->catatan,
                 'hasil' => $request->hasil,
-                'status' => $request->status
+                'status' => $request->status,
+                'penempatan' => $request->penempatan,
             ]);
             return response()->json([
                 'status' => 'success',

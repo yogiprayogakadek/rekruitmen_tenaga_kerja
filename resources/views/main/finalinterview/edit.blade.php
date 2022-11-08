@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group will-show mt-2">
                     <label for="posisi">Posisi Final</label>
-                    <select name="posisi" id="posisi" class="form-select posisi">
+                    <select name="posisi" id="posisi" class="form-select posisi select-dropdown">
                         <option value="">Pilih posisi akhir...</option>
                         @foreach ($posisi as $posisi)
                             <option value="{{$posisi}}" {{$posisi == $final->posisi ? 'selected' : ''}}>{{$posisi}}</option>
@@ -51,6 +51,14 @@
                     <label for="hotel">Nama Hotel</label>
                     <input type="text" name="hotel" id="hotel" class="form-control hotel" value="{{$final->nama_hotel}}">
                     <div class="invalid-feedback error-hotel"></div>
+                </div>
+                <div class="form-group mt-2 will-show mt-2">
+                    <label for="penempatan">Penempatan</label>
+                    <select name="penempatan" id="penempatan" class="form-select penempatan">
+                        <option value="cruise" {{$final->penempatan == 'cruise' ? 'selected'}}>Cruise</option>
+                        <option value="darat" {{$final->penempatan == 'darat' ? 'selected'}}>Darat</option>
+                    </select>
+                    <div class="invalid-feedback error-penempatan"></div>
                 </div>
                 <div class="form-group mt-2 will-show mt-2">
                     <label for="grade">Catatan</label>
@@ -86,3 +94,9 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.select-dropdown').select2();
+    });
+</script>

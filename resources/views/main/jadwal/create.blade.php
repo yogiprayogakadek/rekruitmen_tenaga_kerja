@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="lamaran">Lamaran</label>
-                    <select name="lamaran" id="lamaran" class="form-select lamaran">
+                    <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown">
                         @foreach ($lamaran as $lamaran)
                             {{-- @if ($lamaran->lowongan != null) --}}
                             <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option>
@@ -31,6 +31,36 @@
                     <label for="prainterview">Tanggal Prainterview</label>
                     <input type="date" name="prainterview" id="prainterview" class="form-control prainterview">
                     <div class="invalid-feedback error-prainterview"></div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="jam">Jam Prainterview</label>
+                    <div class="row">
+                        <div class="col-6">
+                            <select name="jam" id="jam" class="form-select jam">
+                                @for ($i = 1; $i < 25; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <select name="menit" id="menit" class="form-select menit">
+                                @for ($j = 0; $j < 60; $j++)
+                                    <option value="{{$j < 10 ? 0 . $j : $j}}">{{$j < 10 ? 0 . $j : $j}}</option>
+                                @endfor
+                            </select>
+                        </div>
+                    </div>
+                    <div class="invalid-feedback error-jam"></div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="lokasi">Lokasi Prainterview</label>
+                    <input type="text" name="lokasi" id="lokasi" class="form-control lokasi">
+                    <div class="invalid-feedback error-lokasi"></div>
+                </div>
+                <div class="form-group mt-2">
+                    <label for="keterangan">Keterangan</label>
+                    <textarea name="keterangan" id="keterangan" class="form-control keterangan"></textarea>
+                    <div class="invalid-feedback error-keterangan"></div>
                 </div>
             </div>
             <div class="card-footer">
@@ -46,3 +76,9 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.select-dropdown').select2();
+    });
+</script>

@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="prainterview">Pelamar Lolos Prainterview</label>
-                    <select name="jadwal" id="jadwal" class="form-select jadwal">
+                    <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown">
                         <option value="">Pilih nama pelamar...</option>
                         @foreach ($prainterview as $prainterview)
                             <option value="{{$prainterview->jadwal->id}}">{{$prainterview->jadwal->lamaran->pelamar->nama}} | {{$prainterview->jadwal->lamaran->lowongan->nama}} - {{$prainterview->jadwal->lamaran->posisi}}</option>
@@ -47,6 +47,14 @@
                     <div class="invalid-feedback error-hotel"></div>
                 </div>
                 <div class="form-group mt-2 will-show mt-2">
+                    <label for="penempatan">Penempatan</label>
+                    <select name="penempatan" id="penempatan" class="form-select penempatan">
+                        <option value="cruise">Cruise</option>
+                        <option value="darat">Darat</option>
+                    </select>
+                    <div class="invalid-feedback error-penempatan"></div>
+                </div>
+                <div class="form-group mt-2 will-show mt-2">
                     <label for="grade">Catatan</label>
                     <textarea name="catatan" id="catatan" class="form-control catatan"></textarea>
                     <div class="invalid-feedback error-catatan"></div>
@@ -73,3 +81,9 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.select-dropdown').select2();
+    });
+</script>

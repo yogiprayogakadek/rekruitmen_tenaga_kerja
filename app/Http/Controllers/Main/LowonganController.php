@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LowonganRequest;
+use App\Models\Lamaran;
 use App\Models\Lowongan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,6 +14,17 @@ class LowonganController extends Controller
 {
     public function index()
     {
+        // $lowongan = Lowongan::find(1);
+        // $lamaran = Lamaran::where('lowongan_id', $lowongan->id)->get();
+        // $posisi = explode(', ', $lowongan->posisi);
+
+        // for($i = 0; $i < count($posisi); $i++) {
+        //     foreach($lamaran as $lam) {
+        //         if($lam->posisi == $posisi[$i]) {
+        //             dd(true);
+        //         }
+        //     }
+        // }
         return view('main.lowongan.index');
     }
 
@@ -99,6 +111,9 @@ class LowonganController extends Controller
     {
         try {
             $lowongan = Lowongan::find($request->id);
+            $lamaran = Lamaran::where('lowongan_id', $lowongan->id)->get();
+            $posisi = explode(', ', $lowongan->getOriginal('posisi'));
+
             $data = [
                 'user_id' => Auth::guard('weboperator')->user()->id,
                 'nama' => $request->nama,
@@ -130,6 +145,17 @@ class LowonganController extends Controller
             }
 
             $lowongan->update($data);
+
+            $posisi_baru = explode(', ', $lowongan->posisi);
+            for($i = 0; $i < count($posisi_baru); $i++) {
+                foreach($lamaran as $lam) {
+                    if($lam->posisi == $posisi[$i]) {
+                        $lam->update([
+                            'posisi' => $posisi_baru[$i]
+                        ]);
+                    }
+                }
+            }
 
             return response()->json([
                 'status' => 'success',

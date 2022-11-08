@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <label for="lamaran">Lamaran</label>
-                    <select name="lamaran" id="lamaran" class="form-select lamaran">
+                    <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown">
                         <option value="">Pilih nama pelamar...</option>
                         @foreach ($lamaran as $lamaran)
                             <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option>
@@ -63,3 +63,9 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.select-dropdown').select2();
+    });
+</script>

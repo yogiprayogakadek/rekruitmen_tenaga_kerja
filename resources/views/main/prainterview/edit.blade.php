@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <input type="hidden" name="jadwal_id" value="{{$jadwal->id}}" id="jadwal_id">
                     <label for="lamaran">Lamaran</label>
-                    <select name="lamaran" id="lamaran" class="form-select lamaran">
+                    <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown">
                         @foreach ($lamaran as $lamaran)
                             <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option>
                         @endforeach
@@ -58,3 +58,9 @@
         </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.select-dropdown').select2();
+    });
+</script>
