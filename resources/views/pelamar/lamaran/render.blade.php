@@ -25,15 +25,17 @@
                         <td>{{$lamaran->lowongan->nama}}</td>
                         <td>{{$lamaran->posisi}}</td>
                         <td>{{$lamaran->created_at->format('d-m-Y')}}</td>
-                        @if ($lamaran->status == 0)
-                            Ditolak
+                        <td>
+                            @if ($lamaran->status == null)
+                            Menunggu Validasi
                             @elseif ($lamaran->status == 1)
                             Diterima
                             @elseif ($lamaran->status == 2)
                             Dipending
                             @else
-                            Menunggu Validasi
+                            Ditolak
                             @endif
+                        </td>
                         <td>{{$lamaran->keterangan ?? '-'}}</td>
                         <td>{{$lamaran->updated_at->format('d-m-Y')}}</td>
                     </tr>
