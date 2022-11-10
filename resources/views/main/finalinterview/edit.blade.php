@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <input type="hidden" name="id" value="{{$final->id}}" id="id">
                     <label for="prainterview">Pelamar Lolos Prainterview</label>
-                    <select name="jadwal" id="jadwal" class="form-select jadwal">
+                    <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown">
                         <option value="">Pilih nama pelamar...</option>
                         @foreach ($prainterview as $prainterview)
                             <option value="{{$prainterview->jadwal->id}}" {{$prainterview->jadwal->id == $final->jadwal_id ? 'selected' : ''}}>{{$prainterview->jadwal->lamaran->pelamar->nama}} | {{$prainterview->jadwal->lamaran->lowongan->nama}} - {{$prainterview->jadwal->lamaran->posisi}}</option>
@@ -55,8 +55,8 @@
                 <div class="form-group mt-2 will-show mt-2">
                     <label for="penempatan">Penempatan</label>
                     <select name="penempatan" id="penempatan" class="form-select penempatan">
-                        <option value="cruise" {{$final->penempatan == 'cruise' ? 'selected'}}>Cruise</option>
-                        <option value="darat" {{$final->penempatan == 'darat' ? 'selected'}}>Darat</option>
+                        <option value="cruise" {{$final->penempatan == 'cruise' ? 'selected' : ''}}>Cruise</option>
+                        <option value="darat" {{$final->penempatan == 'darat' ? 'selected' : ''}}>Darat</option>
                     </select>
                     <div class="invalid-feedback error-penempatan"></div>
                 </div>

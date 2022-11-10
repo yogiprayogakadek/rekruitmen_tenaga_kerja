@@ -109,10 +109,12 @@ class FinalInterviewController extends Controller
         // $jadwal = Jadwal::find($id);
         $prainterview = PraInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->where('hasil', 'lulus')->get();
         $final = FinalInterview::with('jadwal.prainterview', 'jadwal.lamaran.lowongan')->where('id', $id)->first();
+        // dd($final);
         $posisi = array();
         foreach(explode(', ', $final->jadwal->lamaran->lowongan->posisi) as $key => $value) {
             array_push($posisi, $value);
         }
+
 
         $view = [
             'data' => view('main.finalinterview.edit', compact('final', 'posisi', 'prainterview'))->render()

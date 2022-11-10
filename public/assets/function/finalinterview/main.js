@@ -99,12 +99,14 @@ $(document).ready(function () {
 
     $('body').on('click', '.btn-edit', function () {
         let id = $(this).data('id')
+        let select = $(this).data('select')
         $.ajax({
             type: "get",
             url: "/finalinterview/edit/" + id,
             dataType: "json",
             success: function (response) {
                 $(".render").html(response.data);
+                $('.lamaran').val(select).trigger('change')
             },
             error: function (error) {
                 console.log("Error", error);
