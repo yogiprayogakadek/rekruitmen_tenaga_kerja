@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <input type="hidden" name="jadwal_id" value="{{$jadwal->id}}" id="jadwal_id">
+                    <input type="hidden" name="prainterview_id" value="{{$prainterview->id}}" id="prainterview-id">
                     <label for="lamaran">Lamaran</label>
                     <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown">
                         @foreach ($lamaran as $lamaran)
@@ -26,23 +26,28 @@
                     </select>
                     <div class="invalid-feedback error-lamaran"></div>
                 </div>
-                <div class="form-group mt-2">
-                    <label for="prainterview">Tanggal Prainterview</label>
-                    <input type="date" value="{{$jadwal->tanggal_prainterview}}" name="prainterview" id="prainterview" class="form-control prainterview">
-                    <div class="invalid-feedback error-prainterview"></div>
+                <div class="form-group will-show mt-2">
+                    <label for="rekomendasi">Rekomendasi</label>
+                    <select name="rekomendasi" id="rekomendasi" class="form-select rekomendasi"></select>
+                    <div class="invalid-feedback error-rekomendasi"></div>
                 </div>
-                <div class="form-group mt-2">
-                    <label for="finalinterview">Tanggal Final Interview</label>
-                    <input type="date" name="finalinterview" id="finalinterview" class="form-control prainterview">
-                    <span class="text-small text-muted">*kosongkan jika belum ada jadwal</span>
-                    <div class="invalid-feedback error-finalinterview"></div>
+                <div class="form-group mt-2 will-show">
+                    <label for="grade">Grade</label>
+                    <input type="text" name="grade" id="grade" class="form-control grade" value="{{$prainterview->grade}}">
+                    <div class="invalid-feedback error-grade"></div>
                 </div>
-                <div class="form-group mt-2">
-                    <label for="status">Status</label>
-                    <select name="status" class="form-control">
-                        <option value="1" {{$jadwal->status == 1 ? 'selected' : ''}}>Aktif</option>
-                        <option value="0" {{$jadwal->status == 0 ? 'selected' : ''}}>Tidak Aktif</option>
+                <div class="form-group mt-2 will-show">
+                    <label for="grade">Catatan</label>
+                    <textarea name="catatan" id="catatan" class="form-control catatan">{{$prainterview->catatan}}</textarea>
+                    <div class="invalid-feedback error-catatan"></div>
+                </div>
+                <div class="form-group will-show">
+                    <label for="hasil">Hasil</label>
+                    <select name="hasil" id="hasil" class="form-select hasil">
+                        <option value="lulus" {{$prainterview->hasil == 'lulus' ? 'selected' : ''}}>Lulus</option>
+                        <option value="tidak lulus" {{$prainterview->hasil == 'tidak lulus' ? 'selected' : ''}}>Tidak Lulus</option>
                     </select>
+                    <div class="invalid-feedback error-hasil"></div>
                 </div>
             </div>
             @if (Auth::guard('weboperator')->user()->role == 'Petugas')

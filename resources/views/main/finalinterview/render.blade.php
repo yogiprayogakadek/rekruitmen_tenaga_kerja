@@ -29,6 +29,7 @@
                     <th>Nama Hotel</th>
                     <th>Catatan</th>
                     <th>Hasil</th>
+                    <th>Posisi Akhir</th>
                     @if (Auth::guard('weboperator')->user())
                     <th>Status</th>
                     <th>Aksi</th>
@@ -46,9 +47,10 @@
                         <td>{{$finalinterview->catatan}}</td>
                         <td>{{strtoupper($finalinterview->hasil)}}</td>
                         @if (Auth::guard('weboperator')->user())
+                        <td>{{$finalinterview->posisi}}</td>
                         <td>{{$finalinterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
-                            <button class="btn btn-primary btn-edit" data-id="{{$finalinterview->id}}" data-select="{{$finalinterview->jadwal->lamaran_id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
+                            <button class="btn btn-primary btn-edit" data-id="{{$finalinterview->id}}" data-posisi="{{$finalinterview->posisi}}" data-select="{{$finalinterview->jadwal->lamaran_id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
                             {{-- <div class="dropdown d-inline-block">
                                 <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="ri-more-fill align-middle"></i>

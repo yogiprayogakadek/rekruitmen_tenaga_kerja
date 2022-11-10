@@ -100,6 +100,7 @@ $(document).ready(function () {
     $('body').on('click', '.btn-edit', function () {
         let id = $(this).data('id')
         let select = $(this).data('select')
+        let rekomendasi = $(this).data('rekomendasi')
         $.ajax({
             type: "get",
             url: "/prainterview/edit/" + id,
@@ -107,6 +108,9 @@ $(document).ready(function () {
             success: function (response) {
                 $(".render").html(response.data);
                 $('.lamaran').val(select).trigger('change')
+                setTimeout(() => {
+                    $('.rekomendasi').val(rekomendasi)
+                }, 700)
             },
             error: function (error) {
                 console.log("Error", error);
@@ -182,7 +186,7 @@ $(document).ready(function () {
             $('.will-show').show();
             $.get("prainterview/daftar-posisi-lowongan/"+lamaran, function (data) {
                 $.each(data, function (index, value) { 
-                    $('.rekomendasi').append('<option value='+value+'>'+value+'</option>')
+                    $('.rekomendasi').append('<option value="'+value+'">'+value+'</option>')
                 });
             });
         }

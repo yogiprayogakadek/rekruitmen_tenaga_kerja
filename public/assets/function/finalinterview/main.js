@@ -100,6 +100,7 @@ $(document).ready(function () {
     $('body').on('click', '.btn-edit', function () {
         let id = $(this).data('id')
         let select = $(this).data('select')
+        let posisi = $(this).data('posisi')
         $.ajax({
             type: "get",
             url: "/finalinterview/edit/" + id,
@@ -107,6 +108,7 @@ $(document).ready(function () {
             success: function (response) {
                 $(".render").html(response.data);
                 $('.lamaran').val(select).trigger('change')
+                $('.posisi').val(posisi).trigger('change')
             },
             error: function (error) {
                 console.log("Error", error);

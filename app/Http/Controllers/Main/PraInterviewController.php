@@ -98,10 +98,11 @@ class PraInterviewController extends Controller
 
     public function edit($id)
     {
-        $lamaran = Lamaran::with('pelamar', 'lowongan')->get();
-        $jadwal = Jadwal::find($id);
+        $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
+        // $jadwal = Jadwal::find($id);
+        $prainterview = PraInterview::find($id);
         $view = [
-            'data' => view('main.jadwal.edit', compact('lamaran', 'jadwal'))->render()
+            'data' => view('main.prainterview.edit', compact('lamaran', 'prainterview'))->render()
         ];
 
         return response()->json($view);
@@ -110,24 +111,25 @@ class PraInterviewController extends Controller
     public function update(Request $request)
     {
         try {
-            $jadwal = Jadwal::find($request->jadwal_id);
-            $lamaran = Lamaran::find($request->lamaran);
-            $pra = PraInterview::where('jadwal_id', $jadwal->id)->where('status', true)->first();
-            if($request->finalinterview != null) {
-                if(!$pra) {
+            $pra = PraInterview::where('id', $request->prainterview_id)->first();
+            if($request->lamaran != $pra->jadwal->lamaran_id) {
+                $jadwal = Jadwal::where('lamaran_id', $request->lamaran)->first();
+                $cek = PraInterview::where('jadwal_id', $jadwal->id)->where('status', true)->first();
+                if(!$cek) {
                     return response()->json([
-                        'status' => 'info',
-                        'message' => 'Jadwal tidak dapat dibuat karena hasil pra interview belum ada atau tidak lolos',
+                        'status' => 'error',
+                        'message' => 'Data gagal disimpan',
                         'title' => 'Gagal'
                     ]);
                 }
             }
-
-            $jadwal->update([
+            $pra->update([
                 'user_id' => Auth::guard('weboperator')->user()->id,
-                'lamaran_id' => $lamaran->id,
-                'tanggal_prainterview' => $request->prainterview,
-                'status' => $request->status
+                'jadwal_id' => $pra->jadwal_id,
+                'rekomendasi' => $request->rekomendasi,
+                'grade' => $request->grade,
+                'catatan' => $request->catatan,
+                'hasil' => $request->hasil,
             ]);
             return response()->json([
                 'status' => 'success',
