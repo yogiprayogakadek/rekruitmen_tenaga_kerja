@@ -1,61 +1,135 @@
-@extends('auth.master')
-@section('title', 'Rekruitmen Tenaga Kerja | Login')
+<html lang="en" data-theme="light">
 
-@section('content')
-<div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6 col-xl-5">
-        <div class="card mt-4">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="Webinning" name="author">
 
-            <div class="card-body p-4">
-                <div class="text-center mt-2">
-                    <h5 class="text-primary">CPANEL</h5>
-                    <p class="text-muted">Rekruitmen Tenaga Kerja</p>
-                </div>
-                <div class="p-2 mt-4">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="https://dashly-theme.com/assets/css/theme.bundle.css" id="stylesheetLTR">
+    <link rel="stylesheet" href="https://dashly-theme.com/assets/css/theme.rtl.bundle.css" id="stylesheetRTL"
+        disabled="">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+    <link rel="stylesheet" onload="this.onload=null;this.removeAttribute('media');"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap">
+
+    <!-- no-JS fallback -->
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap">
+    </noscript>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://dashly-theme.com/assets/favicon/favicon.ico" sizes="any">
+    <!-- Page Title -->
+    <title>Rekruitmen Tenaga Kerja | CPanel</title>
+</head>
+
+<body class="d-flex align-items-center bg-light-green">
+    <!-- MAIN CONTENT -->
+    <main class="container-fluid">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-7 col-lg-6 px-lg-4 px-xl-8 d-flex flex-column vh-100 py-6">
+
+                <!-- Brand -->
+                <a class="navbar-brand mb-auto" href="./index.html">
+                    <img src="{{asset('assets/uploads/images/logo.png')}}"
+                        class="navbar-brand-img logo-light logo-large" alt="..." width="75">
+                    <img src="{{asset('assets/uploads/images/logo.png')}}" class="navbar-brand-img logo-dark logo-large"
+                        alt="..." width="75">
+                </a>
+                <div>
+                    <!-- Title -->
+                    <h1 class="mb-2">
+                        Sign In
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="text-secondary">
+                        Enter your username and password to access admin panel
+                    </p>
+
+                    <!-- Form -->
                     <form role="form" action="{{route('cpanel.login')}}" method="POST">
                         @csrf
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Enter username" value="{{ old('username') }}">
-                            @error('username')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-4">
 
-                        <div class="mb-3">
-                            <label class="form-label" for="password-input">Password</label>
-                            <div class="position-relative auth-pass-inputgroup mb-3">
-                                <input type="password" name="password" class="form-control pe-5 password-input @error('password') is-invalid @enderror" placeholder="Enter password" id="password-input">
-                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                    <!-- Label -->
+                                    <label class="form-label">
+                                        Username
+                                    </label>
+
+                                    <!-- Input -->
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Your username" name="username" id="username" value="{{ old('username') }}">
+                                    @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="mt-4">
-                            <button class="btn btn-success w-100" type="submit">Sign In</button>
-                        </div>
+                            <div class="col-lg-6">
+                                <!-- Password -->
+                                <div class="mb-4">
+
+                                    <div class="row">
+                                        <div class="col">
+
+                                            <!-- Label -->
+                                            <label class="form-label">
+                                                Password
+                                            </label>
+                                        </div>
+                                    </div> <!-- / .row -->
+
+                                    <!-- Input -->
+                                    <div class="input-group input-group-merge">
+                                        <input type="password" class="form-control @error('password') is-invalid @enderror" autocomplete="off"
+                                            data-toggle-password-input="" placeholder="Your password" name="password">
+
+                                        <button type="button" class="input-group-text px-4 text-secondary link-primary"
+                                            data-toggle-password=""></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- / .row -->
+
+                        <!-- Button -->
+                        <button type="submit" class="btn btn-primary mt-3">
+                            Sign in
+                        </button>
                     </form>
                 </div>
-            </div>
-            <!-- end card body -->
-        </div>
-        <!-- end card -->
-    </div>
-</div>
-@endsection
 
-@push('script')
-<script>
-    $(document).ready(function () {
-        @if (session('status') == 'error')
-        toastr.options =
-        {
-            "closeButton" : true,
-            "progressBar" : true
-        }
-        toastr.error("{{ session('message') }}");
-        @endif
-    });
-</script>
-@endpush
+                <div class="mt-auto">
+
+                    <!-- Link -->
+                    {{-- <small class="mb-0 text-muted">
+                        Don't have an account yet? <a href="./sign-up-cover.html" class="fw-semibold">Sign up</a>
+                    </small> --}}
+                </div>
+
+            </div>
+
+            <div class="col-md-5 col-lg-6 d-none d-lg-block">
+
+                <!-- Image -->
+                <div class="bg-size-cover bg-position-center bg-repeat-no-repeat overlay overlay-dark overlay-50 vh-100 me-n4"
+                    style="background-image: url(https://dashly-theme.com/assets//images/covers/sign-in-cover.jpeg);">
+                </div>
+            </div>
+        </div> <!-- / .row -->
+    </main> <!-- / main -->
+
+    <!-- JAVASCRIPT-->
+    <!-- Theme JS -->
+    <script src="https://dashly-theme.com/assets/js/theme.bundle.js"></script>
+</body>
+
+</html>
