@@ -26,7 +26,7 @@
                         <td>{{$lamaran->posisi}}</td>
                         <td>{{$lamaran->created_at->format('d-m-Y')}}</td>
                         <td>
-                            @if ($lamaran->status == null)
+                            @if ($lamaran->status == '')
                             Menunggu Validasi
                             @elseif ($lamaran->status == 1)
                             Diterima

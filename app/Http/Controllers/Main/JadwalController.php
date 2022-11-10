@@ -22,16 +22,17 @@ class JadwalController extends Controller
 
     public function render()
     {
-        if(Auth::guard('weboperator')) {
+        if(Auth::guard('weboperator')->user()) {
             $jadwal = Jadwal::all();
             $view = [
                 'data' => view('main.jadwal.render', compact('jadwal'))->render()
             ];
             return response()->json($view);
         } else {
-            $jadwal = Jadwal::with('lamaran.pelamar')->where('pelamar_id', Auth::user()->id)->get();
+            $lamaran = Lamaran::where('pelamar_id', Auth::user()->id)->pluck('id')->toArray();
+            $jadwal = Jadwal::with('lamaran.pelamar')->whereIn('lamaran_id', $lamaran)->get();
             $view = [
-                'data' => view('pelamar.jadwa$jadwal.render', compact('jadwa$jadwal'))->render()
+                'data' => view('main.jadwal.render', compact('jadwal'))->render()
             ];
             return response()->json($view);
         }
