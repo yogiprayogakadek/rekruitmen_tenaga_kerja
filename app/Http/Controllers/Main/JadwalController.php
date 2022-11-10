@@ -99,7 +99,7 @@ class JadwalController extends Controller
 
     public function edit($id)
     {
-        $lamaran = Lamaran::with('pelamar', 'lowongan')->get();
+        $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
         $jadwal = Jadwal::find($id);
         $view = [
             'data' => view('main.jadwal.edit', compact('lamaran', 'jadwal'))->render()
