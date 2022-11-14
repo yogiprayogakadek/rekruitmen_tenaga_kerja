@@ -28,6 +28,12 @@
                     <div class="invalid-feedback error-deskripsi"></div>
                 </div>
                 <div class="form-group mt-3">
+                    <label for="foto">File</label>
+                    <input type="file" class="form-control file" name="file" id="file">
+                    <span class="text-small">kosongkan apabila tidak ingin mengganti file pengumuman</span>
+                    <div class="invalid-feedback error-file"></div>
+                </div>
+                <div class="form-group mt-3">
                     <label for="deskripsi">Status</label>
                     <select id="ForminputState status" class="form-select status" name="status" data-choices data-choices-sorting="true">
                         <option value="">Pilih status...</option>

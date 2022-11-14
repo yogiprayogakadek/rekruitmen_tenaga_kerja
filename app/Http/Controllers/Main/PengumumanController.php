@@ -7,6 +7,7 @@ use App\Http\Requests\PengumumanRequest;
 use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Image;
 
 class PengumumanController extends Controller
 {
@@ -43,6 +44,27 @@ class PengumumanController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'status' => true
             ];
+
+            if($request->hasFile('file')) {
+                //get filename with extension
+                $filenamewithextension = $request->file('file')->getClientOriginalName();
+
+                //get file extension
+                $extension = $request->file('file')->getClientOriginalExtension();
+
+                //filename to store
+                $filenametostore = $request->nama . '-' . time() . '.' . $extension;
+                $save_path = 'assets/uploads/pengumuman';
+
+                if (!file_exists($save_path)) {
+                    mkdir($save_path, 666, true);
+                }
+                $img = Image::make($request->file('file')->getRealPath());
+                $img->resize(512, 512);
+                $img->save($save_path . '/' . $filenametostore);
+
+                $data['file'] = $save_path . '/' . $filenametostore;
+            }
 
             Pengumuman::create($data);
 
@@ -81,6 +103,27 @@ class PengumumanController extends Controller
                 'deskripsi' => $request->deskripsi,
                 'status' => $request->status
             ];
+
+            if($request->hasFile('file')) {
+                //get filename with extension
+                $filenamewithextension = $request->file('file')->getClientOriginalName();
+
+                //get file extension
+                $extension = $request->file('file')->getClientOriginalExtension();
+
+                //filename to store
+                $filenametostore = $request->nama . '-' . time() . '.' . $extension;
+                $save_path = 'assets/uploads/pengumuman';
+
+                if (!file_exists($save_path)) {
+                    mkdir($save_path, 666, true);
+                }
+                $img = Image::make($request->file('file')->getRealPath());
+                $img->resize(512, 512);
+                $img->save($save_path . '/' . $filenametostore);
+
+                $data['file'] = $save_path . '/' . $filenametostore;
+            }
 
             $pengumuman->update($data);
 

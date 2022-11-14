@@ -26,6 +26,12 @@
                     <textarea class="form-control deskripsi" name="deskripsi" id="deskripsi" placeholder="masukkan deskripsi pengumuman"></textarea>
                     <div class="invalid-feedback error-deskripsi"></div>
                 </div>
+                <div class="form-group mt-3">
+                    <label for="foto">File</label>
+                    <input type="file" class="form-control file" name="file" id="file">
+                    {{-- <span class="text-small">masukan gambar atau poster dari lowongan kerja</span> --}}
+                    <div class="invalid-feedback error-file"></div>
+                </div>
             </div>
             <div class="card-footer">
                 <div class="mc-footer">

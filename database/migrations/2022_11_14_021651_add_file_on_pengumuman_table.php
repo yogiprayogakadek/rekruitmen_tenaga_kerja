@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('hasil_finalinterview', function (Blueprint $table) {
-            $table->string('penempatan', 100)->after('nama_penempatan');
+        Schema::table('pengumuman', function (Blueprint $table) {
+            $table->string('file', 100)->nullable()->after('deskripsi');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('hasil_finalinterview', function (Blueprint $table) {
-            $table->dropColumn('penempatan');
+        Schema::table('pengumuman', function (Blueprint $table) {
+            $table->dropColumn('file');
         });
     }
 };

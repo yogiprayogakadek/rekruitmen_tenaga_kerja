@@ -20,9 +20,12 @@
                     <label for="lamaran">Lamaran</label>
                     <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown">
                         @foreach ($lamaran as $lamaran)
-                            {{-- @if ($lamaran->lowongan != null) --}}
+                            @if ($lamaran->lowongan != null)
                             <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option>
-                            {{-- @endif --}}
+                            {{-- @else
+                            <option value="">Tidak ada lamaran</option>
+                            @break --}}
+                            @endif
                         @endforeach
                     </select>
                     <div class="invalid-feedback error-lamaran"></div>
@@ -41,6 +44,7 @@
                                     <option value="{{$i}}">{{$i}}</option>
                                 @endfor
                             </select>
+                            <div class="invalid-feedback error-jam"></div>
                         </div>
                         <div class="col-6">
                             <select name="menit" id="menit" class="form-select menit">
@@ -48,9 +52,9 @@
                                     <option value="{{$j < 10 ? 0 . $j : $j}}">{{$j < 10 ? 0 . $j : $j}}</option>
                                 @endfor
                             </select>
+                            <div class="invalid-feedback error-menit"></div>
                         </div>
                     </div>
-                    <div class="invalid-feedback error-jam"></div>
                 </div>
                 <div class="form-group mt-2">
                     <label for="lokasi">Lokasi Prainterview</label>

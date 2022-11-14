@@ -20,15 +20,19 @@
                 <thead>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>No. Telepon</th>
+                    <th>Email</th>
                     {{-- <th>Tempat, Tanggal Lahir</th> --}}
                     {{-- <th>Jenis Kelamin</th> --}}
                     {{-- <th>Agama</th> --}}
-                    <th>Alamat</th>
+                    {{-- <th>Alamat</th> --}}
                     {{-- <th>Berat Badan</th> --}}
                     {{-- <th>Tinggi Badan</th> --}}
                     {{-- <th>Marital Status</th> --}}
-                    <th>Dokumen</th>
+                    {{-- <th>Dokumen</th> --}}
+                    @if(Auth::guard('weboperator')->user()->role == 'Petugas')
                     <th>Status</th>
+                    @endif
                     <th>Aksi</th>
                 </thead>
                 <tbody>
@@ -36,17 +40,21 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pelamar->nama}}</td>
+                        <td>{{$pelamar->telepon}}</td>
+                        <td>{{$pelamar->email}}</td>
                         {{-- <td>{{$pelamar->tempat_lahir}}, {{$pelamar->tanggal_lahir}}</td> --}}
                         {{-- <td>{{$pelamar->jenis_kelamin == 1 ? 'Laki - Laki' : 'Perempuan'}}</td> --}}
                         {{-- <td>{{$pelamar->agama}}</td> --}}
-                        <td>{{$pelamar->alamat}}</td>
+                        {{-- <td>{{$pelamar->alamat}}</td> --}}
                         {{-- <td>{{$pelamar->berat_badan}}</td> --}}
                         {{-- <td>{{$pelamar->tinggi_badan}}</td> --}}
                         {{-- <td>{{$pelamar->marital_status}}</td> --}}
-                        <td>
+                        {{-- <td>
                             <span class="badge bg-primary pointer btn-dokumen" data-id="{{$pelamar->id}}">Lihat</span>
-                        </td>
+                        </td> --}}
+                        @if(Auth::guard('weboperator')->user()->role == 'Petugas')
                         <td>{{$pelamar->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
+                        @endif
                         <td>
                             <button class="btn btn-primary btn-edit" data-id="{{$pelamar->id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
                             

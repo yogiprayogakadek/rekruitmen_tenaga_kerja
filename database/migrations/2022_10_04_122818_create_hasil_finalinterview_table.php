@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreignId('jadwal_id')->references('id')->on('jadwal')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->nullable()->comment('user yang melakukan update data')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('posisi', 100);
-            $table->string('nama_kapal', 50)->nullable();
-            $table->string('nama_hotel', 50)->nullable();
+            $table->string('nama_penempatan', 100)->nullable();
+            // $table->string('nama_kapal', 50)->nullable();
+            // $table->string('nama_hotel', 50)->nullable();
             $table->text('catatan');
             $table->enum('hasil', ['lulus', 'tidak lulus'])->nullable();
             $table->boolean('status')->default(true);

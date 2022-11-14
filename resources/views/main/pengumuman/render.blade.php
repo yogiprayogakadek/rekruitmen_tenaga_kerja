@@ -5,6 +5,7 @@
                 <div class="col-6">
                     Data Pengumuman
                 </div>
+                @if (Auth::guard('weboperator')->user())
                 @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
@@ -12,6 +13,7 @@
                         <i class="nav-icon i-Pen-2 font-weight-bold"></i> Tambah
                     </button>
                 </div>
+                @endif
                 @endif
             </div>
         </div>
@@ -23,9 +25,12 @@
                     <th>Deskripsi</th>
                     <th>Tanggal Pembuatan</th>
                     <th>Tanggal Pembaruan</th>
+                    <th>File Pengumuman</th>
+                    @if (Auth::guard('weboperator')->user())
                     @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                     <th>Status</th>
                     <th>Aksi</th>
+                    @endif
                     @endif
                 </thead>
                 <tbody>
@@ -36,6 +41,8 @@
                         <td>{{$pengumuman->deskripsi}}</td>
                         <td>{{$pengumuman->created_at->format('d/m/y H:i')}}</td>
                         <td>{{$pengumuman->updated_at->format('d/m/y H:i')}}</td>
+                        <td>{!!$pengumuman->file != null ? '<a href="'.asset($pengumuman->file).'" target="_blank">Lihat</a>' : '-' !!}</td>
+                        @if (Auth::guard('weboperator')->user())
                         @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                         <td>{{$pengumuman->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
@@ -55,6 +62,7 @@
                                 {{-- </ul> --}}
                             {{-- </div> --}}
                         </td>
+                        @endif
                         @endif
                     </tr>
                     @endforeach

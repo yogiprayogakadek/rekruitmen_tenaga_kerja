@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <input type="hidden" name="id" value="{{$final->id}}" id="id">
                     <label for="prainterview">Pelamar Lolos Prainterview</label>
-                    <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown">
+                    <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="">Pilih nama pelamar...</option>
                         @foreach ($prainterview as $prainterview)
                             <option value="{{$prainterview->jadwal->id}}" {{$prainterview->jadwal->id == $final->jadwal_id ? 'selected' : ''}}>{{$prainterview->jadwal->lamaran->pelamar->nama}} | {{$prainterview->jadwal->lamaran->lowongan->nama}} - {{$prainterview->jadwal->lamaran->posisi}}</option>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="form-group will-show mt-2">
                     <label for="posisi">Posisi Final</label>
-                    <select name="posisi" id="posisi" class="form-select posisi select-dropdown">
+                    <select name="posisi" id="posisi" class="form-select posisi select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="">Pilih posisi akhir...</option>
                         @foreach ($posisi as $posisi)
                             <option value="{{$posisi}}" {{$posisi == $final->posisi ? 'selected' : ''}}>{{$posisi}}</option>
@@ -43,18 +43,13 @@
                     <div class="invalid-feedback error-posisi"></div>
                 </div>
                 <div class="form-group will-show mt-2">
-                    <label for="kapal">Nama Kapal</label>
-                    <input type="text" name="kapal" id="kapal" class="form-control kapal" value="{{$final->nama_kapal}}">
-                    <div class="invalid-feedback error-kapal"></div>
-                </div>
-                <div class="form-group mt-2 will-show mt-2">
-                    <label for="hotel">Nama Hotel</label>
-                    <input type="text" name="hotel" id="hotel" class="form-control hotel" value="{{$final->nama_hotel}}">
-                    <div class="invalid-feedback error-hotel"></div>
+                    <label for="nama-penempatan">Nama Penempatan</label>
+                    <input type="text" name="nama_penempatan" id="nama-penempatan" class="form-control nama_penempatan" value="{{$final->nama_penempatan}}" placeholder="masukkan nama penempatan" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
+                    <div class="invalid-feedback error-nama_penempatan"></div>
                 </div>
                 <div class="form-group mt-2 will-show mt-2">
                     <label for="penempatan">Penempatan</label>
-                    <select name="penempatan" id="penempatan" class="form-select penempatan">
+                    <select name="penempatan" id="penempatan" class="form-select penempatan" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="cruise" {{$final->penempatan == 'cruise' ? 'selected' : ''}}>Cruise</option>
                         <option value="darat" {{$final->penempatan == 'darat' ? 'selected' : ''}}>Darat</option>
                     </select>
@@ -62,12 +57,12 @@
                 </div>
                 <div class="form-group mt-2 will-show mt-2">
                     <label for="grade">Catatan</label>
-                    <textarea name="catatan" id="catatan" class="form-control catatan">{{$final->catatan}}</textarea>
+                    <textarea name="catatan" id="catatan" class="form-control catatan" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>{{$final->catatan}}</textarea>
                     <div class="invalid-feedback error-catatan"></div>
                 </div>
                 <div class="form-group will-show mt-2">
                     <label for="hasil">Hasil</label>
-                    <select name="hasil" id="hasil" class="form-select hasil">
+                    <select name="hasil" id="hasil" class="form-select hasil" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="lulus" {{$final->status == 'lulus' ? 'selected' : ''}}>Lulus</option>
                         <option value="tidak lulus" {{$final->status == 'tidak lulus' ? 'selected' : ''}}>Tidak Lulus</option>
                     </select>
@@ -75,12 +70,13 @@
                 </div>
                 <div class="form-group mt-2">
                     <label for="status">Status</label>
-                    <select name="status" class="form-control">
+                    <select name="status" class="form-control" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="1" {{$final->status == 1 ? 'selected' : ''}}>Aktif</option>
                         <option value="0" {{$final->status == 0 ? 'selected' : ''}}>Tidak Aktif</option>
                     </select>
                 </div>
             </div>
+            @if (Auth::guard('weboperator')->user())
             @if (Auth::guard('weboperator')->user()->role == 'Petugas')
             <div class="card-footer">
                 <div class="mc-footer">
@@ -92,6 +88,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @endif
         </div>
     </form>

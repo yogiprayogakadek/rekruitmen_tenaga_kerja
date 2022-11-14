@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\JadwalRequest;
 use App\Models\Jadwal;
 use App\Models\Lamaran;
 use App\Models\PraInterview;
@@ -40,10 +41,12 @@ class JadwalController extends Controller
 
     public function create()
     {
-        $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
         // $lamaran = Lamaran::with(['lowongan' => function($query) {
         //     $query->where('status', true);
         // }], 'pelamar')->where('status', true)->get();
+        $lamaran = Lamaran::with(['lowongan' => function($query) {
+            $query->where('status', true);
+        }], 'pelamar')->where('status', true)->get();
         // dd($lamaran);
         $view = [
             'data' => view('main.jadwal.create', compact('lamaran'))->render()
@@ -52,7 +55,7 @@ class JadwalController extends Controller
         return response()->json($view);
     }
 
-    public function store(Request $request)
+    public function store(JadwalRequest $request)
     {
         try {
             $lamaran = Lamaran::find($request->lamaran);
@@ -99,7 +102,10 @@ class JadwalController extends Controller
 
     public function edit($id)
     {
-        $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
+        // $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
+        $lamaran = Lamaran::with(['lowongan' => function($query) {
+            $query->where('status', true);
+        }], 'pelamar')->where('status', true)->get();
         $jadwal = Jadwal::find($id);
         $view = [
             'data' => view('main.jadwal.edit', compact('lamaran', 'jadwal'))->render()
@@ -108,7 +114,7 @@ class JadwalController extends Controller
         return response()->json($view);
     }
 
-    public function update(Request $request)
+    public function update(JadwalRequest $request)
     {
         try {
             $jadwal = Jadwal::find($request->jadwal_id);

@@ -23,7 +23,7 @@ class PraInterviewController extends Controller
     public function render()
     {
         if(Auth::guard('weboperator')) {
-            $prainterview = PraInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->get();
+            $prainterview = PraInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->orderBy('updated_at')->get();
             $view = [
                 'data' => view('main.prainterview.render', compact('prainterview'))->render()
             ];

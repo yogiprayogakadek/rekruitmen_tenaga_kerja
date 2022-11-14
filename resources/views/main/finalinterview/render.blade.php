@@ -6,6 +6,7 @@
                     Data Final Interview
                 </div>
                 @if (Auth::guard('weboperator')->user())
+                @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
                     <button style="margin-right: 5px" type="button" class="btn btn-outline-success btn-print">
@@ -16,6 +17,7 @@
                     </button>
                 </div>
                 @endif
+                @endif
             </div>
         </div>
         <div class="card-body">
@@ -25,15 +27,17 @@
                     <th>Pelamar</th>
                     <th>Nama dan Posisi</th>
                     <th>Jadwal</th>
-                    <th>Nama Kapal</th>
-                    <th>Nama Hotel</th>
-                    <th>Catatan</th>
+                    <th>Nama Penempatan</th>
+                    {{-- <th>Catatan</th> --}}
                     <th>Hasil</th>
                     <th>Posisi Akhir</th>
+                    <th>Tanggal Perubahan</th>
                     @if (Auth::guard('weboperator')->user())
+                    @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                     <th>Status</th>
-                    <th>Aksi</th>
                     @endif
+                    @endif
+                    <th>Aksi</th>
                 </thead>
                 <tbody>
                     @foreach ($finalinterview as $finalinterview)
@@ -41,13 +45,15 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$finalinterview->jadwal->lamaran->pelamar->nama}}</td>
                         <td>{{$finalinterview->jadwal->lamaran->lowongan->nama}} - {{$finalinterview->jadwal->lamaran->posisi}}</td>
-                        <td>{{$finalinterview->jadwal->tanggal_prainterview}}</td>
-                        <td>{{$finalinterview->nama_kapal}}</td>
-                        <td>{{$finalinterview->nama_hotel}}</td>
-                        <td>{{$finalinterview->catatan}}</td>
+                        {{-- <td>{{$finalinterview->jadwal->tanggal_prainterview}}</td> --}}
+                        <td>{{date_format(date_create($finalinterview->jadwal->tanggal_prainterview),"d-m-Y")}}</td>
+                        <td>{{$finalinterview->nama_penempatan}}</td>
+                        {{-- <td>{{$finalinterview->catatan}}</td> --}}
                         <td>{{strtoupper($finalinterview->hasil)}}</td>
-                        @if (Auth::guard('weboperator')->user())
                         <td>{{$finalinterview->posisi}}</td>
+                        <td>{{$finalinterview->updated_at->format('d-m-Y')}}</td>
+                        @if (Auth::guard('weboperator')->user())
+                        @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                         <td>{{$finalinterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
                             <button class="btn btn-primary btn-edit" data-id="{{$finalinterview->id}}" data-posisi="{{$finalinterview->posisi}}" data-select="{{$finalinterview->jadwal->lamaran_id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
@@ -60,8 +66,14 @@
                                 </ul>
                             </div> --}}
                         </td>
-                        @endif
                     </tr>
+                        @endif
+                        @endif
+                    @if (!Auth::guard('weboperator')->user())
+                        <td>
+                            <button class="btn btn-primary btn-edit" data-id="{{$finalinterview->id}}" data-rekomendasi="{{$finalinterview->rekomendasi}}" data-select="{{$finalinterview->jadwal->lamaran_id}}"><i class="fa fa-eye"></i></button>
+                        </td>
+                        @endif
                     @endforeach
                 </tbody>
             </table>

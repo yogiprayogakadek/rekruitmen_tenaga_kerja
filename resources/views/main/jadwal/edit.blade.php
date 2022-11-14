@@ -21,7 +21,13 @@
                     <label for="lamaran">Lamaran</label>
                     <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown">
                         @foreach ($lamaran as $lamaran)
+                            {{-- <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option> --}}
+                            @if ($lamaran->lowongan != null)
                             <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option>
+                            {{-- @else
+                            <option value="">Tidak ada lamaran</option>
+                            @break --}}
+                            @endif
                         @endforeach
                     </select>
                     <div class="invalid-feedback error-lamaran"></div>
@@ -43,6 +49,7 @@
                                     <option value="{{$i}}" {{$i == $jam_prainterview[0] ? 'selected' : ''}}>{{$i}}</option>
                                 @endfor
                             </select>
+                            <div class="invalid-feedback error-jam"></div>
                         </div>
                         <div class="col-6">
                             <select name="menit" id="menit" class="form-select menit">
@@ -50,9 +57,9 @@
                                     <option value="{{$j < 10 ? 0 . $j : $j}}" {{$j == $jam_prainterview[1] ? 'selected' : ''}}>{{$j < 10 ? 0 . $j : $j}}</option>
                                 @endfor
                             </select>
+                            <div class="invalid-feedback error-menit"></div>
                         </div>
                     </div>
-                    <div class="invalid-feedback error-jam"></div>
                 </div>
                 <div class="form-group mt-2">
                     <label for="lokasi">Lokasi Prainterview</label>
@@ -69,16 +76,17 @@
                 <div class="form-group mt-2">
                     @php
                         $jam_finalinterview = explode(':', $jadwal->jam_finalinterview)
-                    @endphp
+                        @endphp
                     <label for="jam-final">Jam Final Fnterview</label>
                     <div class="row">
                         <div class="col-6">
                             <select name="jam_final" id="jam-final" class="form-select jam_final">
                                 @for ($m = 0; $m < 24; $m++)
-                                    <option value="{{$m}}">{{$m}}</option>
-                                    {{-- <option value="{{$m}}" {{$m == $jam_prainterview[0] ? 'selected' : ''}}>{{$m}}</option> --}}
+                                <option value="{{$m}}">{{$m}}</option>
+                                {{-- <option value="{{$m}}" {{$m == $jam_prainterview[0] ? 'selected' : ''}}>{{$m}}</option> --}}
                                 @endfor
                             </select>
+                            <div class="invalid-feedback error-jam_final"></div>
                         </div>
                         <div class="col-6">
                             <select name="menit_final" id="menit-final" class="form-select menit_final">
@@ -87,10 +95,10 @@
                                     {{-- <option value="{{$n < 10 ? 0 . $n : $n}}" {{$n == $jam_finalinterview[1] ? 'selected' : ''}}>{{$n < 10 ? 0 . $n : $n}}</option> --}}
                                 @endfor
                             </select>
+                            <div class="invalid-feedback error-menit_final"></div>
                         </div>
                     </div>
                     <span class="text-small text-muted">*kosongkan jika belum ada jadwal final interview</span>
-                    <div class="invalid-feedback error-jam_final"></div>
                 </div>
                 <div class="form-group mt-2">
                     <label for="lokasi-final">Lokasi Final Interview</label>
@@ -112,6 +120,7 @@
                     </select>
                 </div>
             </div>
+            {{-- @if (Auth::guard('weboperator')->user()) --}}
             @if (Auth::guard('weboperator')->user()->role == 'Petugas')
             <div class="card-footer">
                 <div class="mc-footer">
@@ -124,6 +133,7 @@
                 </div>
             </div>
             @endif
+            {{-- @endif --}}
         </div>
     </form>
 </div>

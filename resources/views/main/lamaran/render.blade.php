@@ -17,7 +17,9 @@
                     <th>Tanggal Daftar</th>
                     <th>Status</th>
                     <th>Keterangan</th>
+                    @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                     <th>Aksi</th>
+                    @endif
                 </thead>
                 <tbody>
                     @foreach ($lamaran as $lamaran)
@@ -26,13 +28,13 @@
                         <td>{{$lamaran->lowongan->nama}}</td>
                         <td>{{$lamaran->pelamar->nama}}</td>
                         <td>{{$lamaran->posisi}}</td>
-                        <td>{{$lamaran->created_at->format('d-m-Y')}}</td>
-                        {{-- <td>{{$lamaran->status == '' ? 'Menunggu validasi' : ($lamaran->status == 1 ? 'Diterima' : 'Ditolak')}}</td> --}}
+                        <td>{{$lamaran->updated_at->format('d-m-Y')}}</td>
+                        {{-- <td>{{$lamaran->status == '' ? 'Menunggu validasi' : ($lamaran->status == 1 ? 'Disetujui' : 'Ditolak')}}</td> --}}
                         <td>
                             @if ($lamaran->status == '')
                             Menunggu Validasi
                             @elseif ($lamaran->status == 1)
-                            Diterima
+                            Disetujui
                             @elseif ($lamaran->status == 2)
                             Dipending
                             @else
@@ -40,6 +42,7 @@
                             @endif
                         </td>
                         <td>{{$lamaran->keterangan ?? '-'}}</td>
+                        @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                         <td>
                             <button class="btn btn-primary btn-edit" data-id="{{$lamaran->id}}" data-status={{$lamaran->status}} data-keterangan={{$lamaran->keterangan}}><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
                             {{-- <div class="dropdown d-inline-block">
@@ -51,6 +54,7 @@
                                 </ul>
                             </div> --}}
                         </td>
+                        @endif
                     </tr>
                     @endforeach
                 </tbody>
@@ -77,8 +81,8 @@
                                 <label for="">Status</label>
                                 <select class="form-select mb-3 status" name="status">
                                     <option value="0">Ditolak</option>
-                                    <option value="1">Diterima</option>
-                                    <option value="2">Pending</option>
+                                    <option value="1">Disetujui</option>
+                                    <option value="2">Dipending</option>
                                 </select>
                             </div>
                             <div class="form-group keterangan-group">

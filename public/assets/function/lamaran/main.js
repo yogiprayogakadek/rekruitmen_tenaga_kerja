@@ -80,15 +80,15 @@ $(document).ready(function () {
         });
     });
 
-    $('body').on('change', '.status', function() {
-        let status = $(this).val();
-        if(status == 1) {
-            $('#keterangan').val('');
-            $('.keterangan-group').hide()
-        } else {
-            $('.keterangan-group').show()
-        }
-    });
+    // $('body').on('change', '.status', function() {
+    //     let status = $(this).val();
+    //     if(status == 1) {
+    //         $('#keterangan').val('');
+    //         $('.keterangan-group').hide()
+    //     } else {
+    //         $('.keterangan-group').show()
+    //     }
+    // });
 
     $('body').on('click', '.btn-edit', function () {
         let id = $(this).data('id')
@@ -97,7 +97,7 @@ $(document).ready(function () {
         $('#modalStatus').modal('show')
         $('input[name=lamaran_id]').val(id)
         $('.status').val(status)
-        status == 1 ? $('.keterangan-group').hide() : $('.keterangan-group').show()
+        // status == 1 ? $('.keterangan-group').hide() : $('.keterangan-group').show()
         $('#keterangan').html(keterangan)
     });
 });

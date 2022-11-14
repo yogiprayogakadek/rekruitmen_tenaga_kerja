@@ -6,12 +6,14 @@
                     Data Jadwal Kerja
                 </div>
                 @if (Auth::guard('weboperator')->user())
+                @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
                     <button type="button" class="btn btn-outline-primary btn-add">
                         <i class="nav-icon i-Pen-2 font-weight-bold"></i> Tambah
                     </button>
                 </div>
+                @endif
                 @endif
             </div>
         </div>
@@ -30,8 +32,10 @@
                     <th>Lokasi Final Interview</th>
                     <th>Jam Final Interview</th>
                     @if (Auth::guard('weboperator')->user())
+                    @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                     <th>Status</th>
                     <th>Aksi</th>
+                    @endif
                     @endif
                 </thead>
                 <tbody>
@@ -49,6 +53,7 @@
                         <td>{{$jadwal->lokasi_finalinterview == '' ? 'Belum diatur' : $jadwal->lokasi_finalinterview}}</td>
                         <td>{{$jadwal->jam_finalinterview == '' ? 'Belum diatur' : $jadwal->jam_finalinterview}}</td>
                         @if (Auth::guard('weboperator')->user())
+                        @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                         <td>{{$jadwal->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
                             <button class="btn btn-primary btn-edit" data-id="{{$jadwal->id}}" data-select="{{$jadwal->lamaran_id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
@@ -61,6 +66,7 @@
                                 </ul>
                             </div> --}}
                         </td>
+                        @endif
                         @endif
                     </tr>
                     @endforeach

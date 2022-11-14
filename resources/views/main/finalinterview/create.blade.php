@@ -37,14 +37,9 @@
                     <div class="invalid-feedback error-posisi"></div>
                 </div>
                 <div class="form-group will-show mt-2">
-                    <label for="kapal">Nama Kapal</label>
-                    <input type="text" name="kapal" id="kapal" class="form-control kapal">
-                    <div class="invalid-feedback error-kapal"></div>
-                </div>
-                <div class="form-group mt-2 will-show mt-2">
-                    <label for="hotel">Nama Hotel</label>
-                    <input type="text" name="hotel" id="hotel" class="form-control hotel">
-                    <div class="invalid-feedback error-hotel"></div>
+                    <label for="nama-penempatan">Nama Penempatan</label>
+                    <input type="text" name="nama_penempatan" id="nama-penempatan" class="form-control nama_penempatan" placeholder="masukkan nama penempatan">
+                    <div class="invalid-feedback error-nama_penempatan"></div>
                 </div>
                 <div class="form-group mt-2 will-show mt-2">
                     <label for="penempatan">Penempatan</label>
