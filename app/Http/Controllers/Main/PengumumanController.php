@@ -46,22 +46,20 @@ class PengumumanController extends Controller
             ];
 
             if($request->hasFile('file')) {
-                //get filename with extension
                 $filenamewithextension = $request->file('file')->getClientOriginalName();
 
                 //get file extension
                 $extension = $request->file('file')->getClientOriginalExtension();
 
                 //filename to store
-                $filenametostore = $request->nama . '-' . time() . '.' . $extension;
+                $filenametostore = $request->perihal . '-' . time() . '.' . $extension;
                 $save_path = 'assets/uploads/pengumuman';
 
                 if (!file_exists($save_path)) {
                     mkdir($save_path, 666, true);
                 }
-                $img = Image::make($request->file('file')->getRealPath());
-                $img->resize(512, 512);
-                $img->save($save_path . '/' . $filenametostore);
+                
+                $request->file('file')->move($save_path, $filenametostore);
 
                 $data['file'] = $save_path . '/' . $filenametostore;
             }
@@ -105,22 +103,20 @@ class PengumumanController extends Controller
             ];
 
             if($request->hasFile('file')) {
-                //get filename with extension
                 $filenamewithextension = $request->file('file')->getClientOriginalName();
 
                 //get file extension
                 $extension = $request->file('file')->getClientOriginalExtension();
 
                 //filename to store
-                $filenametostore = $request->nama . '-' . time() . '.' . $extension;
+                $filenametostore = $request->perihal . '-' . time() . '.' . $extension;
                 $save_path = 'assets/uploads/pengumuman';
 
                 if (!file_exists($save_path)) {
                     mkdir($save_path, 666, true);
                 }
-                $img = Image::make($request->file('file')->getRealPath());
-                $img->resize(512, 512);
-                $img->save($save_path . '/' . $filenametostore);
+                
+                $request->file('file')->move($save_path, $filenametostore);
 
                 $data['file'] = $save_path . '/' . $filenametostore;
             }
