@@ -16,7 +16,7 @@
                     <th>Tanggal Daftar</th>
                     <th>Status</th>
                     <th>Keterangan</th>
-                    <th>Tanggal Update</th>
+                    <th>Tanggal Pembaruan</th>
                 </thead>
                 <tbody>
                     @foreach ($lamaran as $lamaran)

@@ -8,7 +8,7 @@
                 @if (Auth::guard('weboperator')->user())
                 <div class="col-6 d-flex align-items-center">
                     <div class="m-auto"></div>
-                    <button type="button" class="btn btn-outline-primary btn-print">
+                    <button type="button" class="btn btn-outline-success btn-print">
                         <i class="fa fa-print fa-1x"></i>
                     </button>
                 </div>
@@ -22,6 +22,7 @@
                     <th>Nama</th>
                     <th>No. Telepon</th>
                     <th>Email</th>
+                    <th>Foto</th>
                     {{-- <th>Tempat, Tanggal Lahir</th> --}}
                     {{-- <th>Jenis Kelamin</th> --}}
                     {{-- <th>Agama</th> --}}
@@ -42,6 +43,7 @@
                         <td>{{$pelamar->nama}}</td>
                         <td>{{$pelamar->telepon}}</td>
                         <td>{{$pelamar->email}}</td>
+                        <td><img src="{{$pelamar->foto}}" width="70px"></td>
                         {{-- <td>{{$pelamar->tempat_lahir}}, {{$pelamar->tanggal_lahir}}</td> --}}
                         {{-- <td>{{$pelamar->jenis_kelamin == 1 ? 'Laki - Laki' : 'Perempuan'}}</td> --}}
                         {{-- <td>{{$pelamar->agama}}</td> --}}
@@ -57,7 +59,7 @@
                         @endif
                         <td>
                             <button class="btn btn-primary btn-edit" data-id="{{$pelamar->id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
-                            
+
                             {{-- <div class="dropdown d-inline-block">
                                 <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="ri-more-fill align-middle"></i>

@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="form-group">
+                <div class="form-group" hidden>
                     <input type="hidden" name="jadwal_id" value="{{$jadwal->id}}" id="jadwal_id">
                     <label for="lamaran">Lamaran</label>
                     <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown">
@@ -33,7 +33,7 @@
                     <div class="invalid-feedback error-lamaran"></div>
                 </div>
                 <div class="form-group mt-2">
-                    <label for="prainterview">Tanggal Prainterview</label>
+                    <label for="prainterview">Tanggal Pra Interview</label>
                     <input type="date" value="{{$jadwal->tanggal_prainterview}}" name="prainterview" id="prainterview" class="form-control prainterview">
                     <div class="invalid-feedback error-prainterview"></div>
                 </div>
@@ -41,7 +41,7 @@
                     @php
                         $jam_prainterview = explode(':', $jadwal->jam_prainterview)
                     @endphp
-                    <label for="jam">Jam Prainterview</label>
+                    <label for="jam">Jam Pra Interview</label>
                     <div class="row">
                         <div class="col-6">
                             <select name="jam" id="jam" class="form-select jam">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="form-group mt-2">
-                    <label for="lokasi">Lokasi Prainterview</label>
+                    <label for="lokasi">Lokasi Pra Interview</label>
                     <input type="text" name="lokasi" id="lokasi" class="form-control lokasi" value="{{$jadwal->lokasi_prainterview}}">
                     <div class="invalid-feedback error-lokasi"></div>
                 </div>

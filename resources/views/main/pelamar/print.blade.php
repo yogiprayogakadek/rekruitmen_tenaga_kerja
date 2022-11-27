@@ -45,7 +45,7 @@
                         <tr>
                             <td>{{$loop->iteration}}</td>
                             <td>{{$pelamar->nama}}</td>
-                            <td>{{$pelamar->tempat_lahir}}, {{$pelamar->tanggal_lahir}}</td>
+                            <td>{{$pelamar->tempat_lahir}}, {{date_format(date_create($pelamar->tanggal_lahir),"d-m-Y")}}</td>
                             <td>{{$pelamar->jenis_kelamin == 1 ? 'Laki - Laki' : 'Perempuan'}}</td>
                             <td>{{$pelamar->agama}}</td>
                             <td>{{$pelamar->alamat}}</td>

@@ -43,7 +43,7 @@ Route::middleware('isLoggedInOperator')->group(function() {
     Route::get('/dashboard', function() {
         return view('main.dashboard.index');
     })->name('dashboard');
-    
+
     Route::namespace('Main')->group(function() {
 
         // Petugas Controller
@@ -72,7 +72,7 @@ Route::middleware('isLoggedInOperator')->group(function() {
                 Route::post('/store', 'store')->name('store');
                 Route::post('/update', 'update')->name('update');
             });
-            
+
             // Pelamar Controller
             Route::controller(PelamarController::class)
             ->prefix('pelamar')
@@ -120,6 +120,9 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
             Route::get('', 'index')->name('index');
             Route::get('/render', 'render')->name('render');
             Route::post('/update', 'update')->name('update');
+            Route::get('/print', 'print')->name('print');
+
+            Route::get('/pelamar/{id}', 'pelamar')->name('pelamar');
     });
 
     // Jadwal Controller
@@ -133,6 +136,8 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
             Route::post('/store', 'store')->name('store');
             Route::get('/edit/{id}', 'edit')->name('edit');
             Route::post('/update', 'update')->name('update');
+
+            Route::get('/pelamar/{id}', 'pelamar')->name('pelamar');
     });
 
     // Pra Interview Controller
@@ -148,6 +153,8 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
             Route::get('/print', 'print')->name('print');
             Route::get('/daftar-posisi-lowongan/{id}', 'daftarPosisi')->name('daftar.posisi');
             Route::post('/update', 'update')->name('update');
+
+            Route::get('/pelamar/{id}', 'pelamar')->name('pelamar');
     });
 
     // Final Interview Controller
@@ -163,6 +170,8 @@ Route::namespace('Main')->middleware('auth:web,weboperator')->group(function() {
             Route::get('/print', 'print')->name('print');
             Route::get('/rekomendasi-posisi/{id}', 'rekomendasiPosisi')->name('rekomendasi.posisi');
             Route::post('/update', 'update')->name('update');
+
+            Route::get('/pelamar/{id}', 'pelamar')->name('pelamar');
     });
 
     // Pengumuman Controller

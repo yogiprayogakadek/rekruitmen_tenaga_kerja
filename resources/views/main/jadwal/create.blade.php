@@ -31,12 +31,12 @@
                     <div class="invalid-feedback error-lamaran"></div>
                 </div>
                 <div class="form-group mt-2">
-                    <label for="prainterview">Tanggal Prainterview</label>
+                    <label for="prainterview">Tanggal Pra Interview</label>
                     <input type="date" name="prainterview" id="prainterview" class="form-control prainterview">
                     <div class="invalid-feedback error-prainterview"></div>
                 </div>
                 <div class="form-group mt-2">
-                    <label for="jam">Jam Prainterview</label>
+                    <label for="jam">Jam Pra Interview</label>
                     <div class="row">
                         <div class="col-6">
                             <select name="jam" id="jam" class="form-select jam">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="form-group mt-2">
-                    <label for="lokasi">Lokasi Prainterview</label>
+                    <label for="lokasi">Lokasi Pra Interview</label>
                     <input type="text" name="lokasi" id="lokasi" class="form-control lokasi">
                     <div class="invalid-feedback error-lokasi"></div>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Models\Jadwal;
 use App\Models\Lamaran;
+use App\Models\Pelamar;
 use App\Models\PraInterview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class PraInterviewController extends Controller
 
     public function render()
     {
-        if(Auth::guard('weboperator')) {
+        if(Auth::guard('weboperator')->user()) {
             $prainterview = PraInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->orderBy('updated_at')->get();
             $view = [
                 'data' => view('main.prainterview.render', compact('prainterview'))->render()
@@ -30,11 +31,12 @@ class PraInterviewController extends Controller
             return response()->json($view);
         } else {
             $lamaran = Lamaran::where('pelamar_id', Auth::user()->id)->pluck('id')->toArray();
+            $jadwal = Jadwal::whereIn('lamaran_id', $lamaran)->pluck('id')->toArray();
             $prainterview = PraInterview::with(['jadwal' => function($query) use($lamaran) {
-                $query->whereIn('pelamar_id', $lamaran);
-            }])->get();
+                $query->whereIn('lamaran_id', $lamaran);
+            }])->whereIn('jadwal_id', $jadwal)->get();
             $view = [
-                'data' => view('pelamar.prainterview.render', compact('prainterview'))->render()
+                'data' => view('main.prainterview.pelamar.index', compact('prainterview'))->render()
             ];
             return response()->json($view);
         }
@@ -42,7 +44,9 @@ class PraInterviewController extends Controller
 
     public function create()
     {
-        $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
+        $prainterview = PraInterview::pluck('jadwal_id')->toArray();
+        $jadwal = Jadwal::whereIn('id', $prainterview)->pluck('lamaran_id')->toArray();
+        $lamaran = Lamaran::with('pelamar', 'lowongan')->whereNotIn('id', $jadwal)->where('status', true)->get();
         $view = [
             'data' => view('main.prainterview.create', compact('lamaran'))->render()
         ];
@@ -151,6 +155,16 @@ class PraInterviewController extends Controller
         $view = [
             'data' => view('main.prainterview.print', compact('prainterview'))->render()
         ];
+        return response()->json($view);
+    }
+
+    public function pelamar($id)
+    {
+        $pelamar = Pelamar::find($id);
+        $view = [
+            'data' => view('main.pelamar.dokumen', compact('pelamar'))->render()
+        ];
+
         return response()->json($view);
     }
 }

@@ -3,7 +3,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-6">
-                    Data Jadwal Kerja
+                    Data Jadwal
                 </div>
                 @if (Auth::guard('weboperator')->user())
                 @if (Auth::guard('weboperator')->user()->role == 'Petugas')
@@ -25,12 +25,12 @@
                     <th>Pelamar</th>
                     <th>Posisi</th>
                     <th>Tanggal Pra Interview</th>
-                    <th>Lokasi Prainterview</th>
-                    <th>Jam Prainterview</th>
-
+                    <th>Lokasi Pra Interview</th>
+                    <th>Jam Pra Interview</th>
                     <th>Tanggal Final Interview</th>
                     <th>Lokasi Final Interview</th>
                     <th>Jam Final Interview</th>
+                    <th>Keterangan</th>
                     @if (Auth::guard('weboperator')->user())
                     @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                     <th>Status</th>
@@ -43,15 +43,17 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$jadwal->lamaran->lowongan->nama}}</td>
-                        <td>{{$jadwal->lamaran->pelamar->nama}}</td>
+                        <td>
+                            <span style="cursor: pointer;" class="btn-pelamar" data-id="{{$jadwal->lamaran->pelamar->id}}">{{$jadwal->lamaran->pelamar->nama}}</span>
+                        </td>
                         <td>{{$jadwal->lamaran->posisi}}</td>
-                        <td>{{$jadwal->tanggal_prainterview}}</td>
+                        <td>{{\Carbon\Carbon::createFromFormat('Y-m-d',$jadwal->tanggal_prainterview)->format('d-m-Y')}}</td>
                         <td>{{$jadwal->lokasi_prainterview}}</td>
-                        <td>{{$jadwal->jam_prainterview}}</td>
-                        
-                        <td>{{$jadwal->tanggal_finalinterview == '' ? 'Belum diatur' : $jadwal->tanggal_finalinterview}}</td>
+                        <td>{{\Carbon\Carbon::createFromFormat('H:i:s',$jadwal->jam_prainterview)->format('H:i')}}</td>
+                        <td>{{$jadwal->tanggal_finalinterview == '' ? 'Belum diatur' : \Carbon\Carbon::createFromFormat('Y-m-d',$jadwal->tanggal_finalinterview)->format('d-m-Y')}}</td>
                         <td>{{$jadwal->lokasi_finalinterview == '' ? 'Belum diatur' : $jadwal->lokasi_finalinterview}}</td>
-                        <td>{{$jadwal->jam_finalinterview == '' ? 'Belum diatur' : $jadwal->jam_finalinterview}}</td>
+                        <td>{{$jadwal->jam_finalinterview == '' ? 'Belum diatur' : \Carbon\Carbon::createFromFormat('H:i:s',$jadwal->jam_finalinterview)->format('H:i')}}</td>
+                        <td>{{$jadwal->keterangan}}</td>
                         @if (Auth::guard('weboperator')->user())
                         @if (Auth::guard('weboperator')->user()->role == 'Petugas')
                         <td>{{$jadwal->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>

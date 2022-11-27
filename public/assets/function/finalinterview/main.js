@@ -27,11 +27,30 @@ function tambah() {
     });
 }
 
+function getPelamar(pelamar_id) {
+    $.ajax({
+        type: "get",
+        url: "/finalinterview/pelamar/"+pelamar_id,
+        dataType: "json",
+        success: function (response) {
+            $(".render").html(response.data);
+        },
+        error: function (error) {
+            console.log("Error", error);
+        },
+    });
+}
+
 $(document).ready(function () {
     getData();
 
     $('body').on('click', '.btn-add', function () {
         tambah();
+    });
+
+    $('body').on('click', '.btn-pelamar', function () {
+        let pelamar_id = $(this).data('id');
+        getPelamar(pelamar_id);
     });
 
     $('body').on('click', '.btn-data', function () {
@@ -184,12 +203,12 @@ $(document).ready(function () {
             $('.will-show').show();
             $.get("finalinterview/rekomendasi-posisi/"+jadwal, function (data) {
                 $('.rekomendasi').val(data.jadwal.prainterview.rekomendasi)
-                $.each(data.posisi, function (index, value) { 
+                $.each(data.posisi, function (index, value) {
                     $('.posisi').append('<option value='+value+'>'+value+'</option>')
                 });
             });
         }
-    }); 
+    });
 
     $('body').on('click', '.btn-print', function () {
         Swal.fire({
@@ -211,7 +230,7 @@ $(document).ready(function () {
                 };
                 $.ajax({
                     type: "GET",
-                    url: "final/print",
+                    url: "finalinterview/print",
                     dataType: "json",
                     success: function (response) {
                         document.title= 'Laporan - ' + new Date().toJSON().slice(0,10).replace(/-/g,'/')

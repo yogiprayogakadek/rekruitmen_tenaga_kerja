@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index.html" class="logo logo-dark">
+        <a href="{{route('dashboard')}}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
             </span>
@@ -11,12 +11,12 @@
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index.html" class="logo logo-light">
+        <a href="{{route('dashboard')}}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="17">
+                Bali Ocean Crew
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
@@ -98,7 +98,7 @@
                         <i class="las la-pencil-ruler"></i> <span data-key="t-widgets">Final Interview</span>
                     </a>
                 </li>
-                
+
             </ul>
         </div>
         <!-- Sidebar -->

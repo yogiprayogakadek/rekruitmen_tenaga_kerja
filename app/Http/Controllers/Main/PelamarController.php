@@ -25,7 +25,7 @@ class PelamarController extends Controller
         return response()->json($view);
     }
 
-    public function edit($id) 
+    public function edit($id)
     {
         $pelamar = Pelamar::find($id);
         $view = [
@@ -39,7 +39,7 @@ class PelamarController extends Controller
     {
         $pelamar = Pelamar::find($id);
         $dokumen = json_decode($pelamar->documents);
-        
+
         $data = array();
         foreach($dokumen as $key => $value) {
             if($value == 'empty') {

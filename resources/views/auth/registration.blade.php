@@ -8,8 +8,8 @@
 
             <div class="card-body p-4">
                 <div class="text-center mt-2">
-                    <h5 class="text-primary">Welcome Back !</h5>
-                    <p class="text-muted">Sign in to continue to Velzon.</p>
+                    <h5 class="text-primary">Sign Up</h5>
+                    <p class="text-muted">Rekruitmen Tenaga Kerja</p>
                 </div>
                 <div class="p-2 mt-4">
                     <form id="formRegister" action="{{route('registration.store')}}" method="POST" enctype="multipart/form-data">
@@ -98,7 +98,7 @@
         <!-- end card -->
 
         <div class="mt-4 text-center">
-            <p class="mb-0">Sudah punya akun ? <a href="/login" class="fw-semibold text-primary text-decoration-underline"> Sig in </a> </p>
+            <p class="mb-0">Sudah punya akun ? <a href="/login" class="fw-semibold text-primary text-decoration-underline"> Sign In </a> </p>
         </div>
 
     </div>

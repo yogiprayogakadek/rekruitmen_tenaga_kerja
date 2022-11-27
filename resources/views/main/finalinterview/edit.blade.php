@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6">
-                        Ubah Hasil Interview
+                        Data Hasil Final Interview
                     </div>
                     <div class="col-6 d-flex align-items-center">
                         <div class="m-auto"></div>
@@ -18,7 +18,7 @@
             <div class="card-body">
                 <div class="form-group">
                     <input type="hidden" name="id" value="{{$final->id}}" id="id">
-                    <label for="prainterview">Pelamar Lolos Prainterview</label>
+                    <label for="prainterview">Pelamar Lolos Pra Interview</label>
                     <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="">Pilih nama pelamar...</option>
                         @foreach ($prainterview as $prainterview)
@@ -33,7 +33,7 @@
                     <div class="invalid-feedback error-rekomendasi"></div>
                 </div>
                 <div class="form-group will-show mt-2">
-                    <label for="posisi">Posisi Final</label>
+                    <label for="posisi">Posisi Akhir</label>
                     <select name="posisi" id="posisi" class="form-select posisi select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="">Pilih posisi akhir...</option>
                         @foreach ($posisi as $posisi)

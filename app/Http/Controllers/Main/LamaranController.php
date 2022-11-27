@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lamaran;
+use App\Models\Pelamar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +31,7 @@ class LamaranController extends Controller
             $lamaran = Lamaran::with('lowongan', 'pelamar')->where('pelamar_id', Auth::user()->id)->get();
             // dd($lamaran);
             $view = [
-                'data' => view('pelamar.lamaran.render', compact('lamaran'))->render()
+                'data' => view('main.lamaran.pelamar.index', compact('lamaran'))->render()
             ];
             return response()->json($view);
         }
@@ -59,5 +60,23 @@ class LamaranController extends Controller
                 'title' => 'Gagal'
             ]);
         }
+    }
+    public function print()
+    {
+        $lamaran = Lamaran::all();
+        $view = [
+            'data' => view('main.lamaran.print', compact('lamaran'))->render(),
+        ];
+        return response()->json($view);
+    }
+
+    public function pelamar($id)
+    {
+        $pelamar = Pelamar::find($id);
+        $view = [
+            'data' => view('main.pelamar.dokumen', compact('pelamar'))->render()
+        ];
+
+        return response()->json($view);
     }
 }

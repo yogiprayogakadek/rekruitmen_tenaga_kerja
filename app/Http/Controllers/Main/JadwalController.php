@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\JadwalRequest;
 use App\Models\Jadwal;
 use App\Models\Lamaran;
+use App\Models\Pelamar;
 use App\Models\PraInterview;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,9 +32,9 @@ class JadwalController extends Controller
             return response()->json($view);
         } else {
             $lamaran = Lamaran::where('pelamar_id', Auth::user()->id)->pluck('id')->toArray();
-            $jadwal = Jadwal::with('lamaran.pelamar')->whereIn('lamaran_id', $lamaran)->get();
+            $jadwal = Jadwal::with('lamaran.pelamar', 'lamaran.lowongan')->whereIn('lamaran_id', $lamaran)->get();
             $view = [
-                'data' => view('main.jadwal.render', compact('jadwal'))->render()
+                'data' => view('main.jadwal.pelamar.index', compact('jadwal'))->render()
             ];
             return response()->json($view);
         }
@@ -44,10 +45,10 @@ class JadwalController extends Controller
         // $lamaran = Lamaran::with(['lowongan' => function($query) {
         //     $query->where('status', true);
         // }], 'pelamar')->where('status', true)->get();
+        $jadwal = Jadwal::pluck('lamaran_id')->toArray();
         $lamaran = Lamaran::with(['lowongan' => function($query) {
             $query->where('status', true);
-        }], 'pelamar')->where('status', true)->get();
-        // dd($lamaran);
+        }], 'pelamar')->whereNotIn('id', $jadwal)->where('status', true)->get();
         $view = [
             'data' => view('main.jadwal.create', compact('lamaran'))->render()
         ];
@@ -129,7 +130,7 @@ class JadwalController extends Controller
                     ]);
                 }
             }
-            
+
             $waktu_prainterview = $request->jam . ':' . $request->menit;
             $waktu_finalinterview = $request->jam_final . ':' . $request->menit_final;
             $jadwal->update([
@@ -157,5 +158,15 @@ class JadwalController extends Controller
                 'title' => 'Gagal'
             ]);
         }
+    }
+
+    public function pelamar($id)
+    {
+        $pelamar = Pelamar::find($id);
+        $view = [
+            'data' => view('main.pelamar.dokumen', compact('pelamar'))->render()
+        ];
+
+        return response()->json($view);
     }
 }

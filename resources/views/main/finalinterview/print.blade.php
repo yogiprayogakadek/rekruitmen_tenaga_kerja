@@ -33,10 +33,10 @@
                         <th>Pelamar</th>
                         <th>Nama dan Posisi</th>
                         <th>Jadwal</th>
-                        <th>Nama Kapal</th>
-                        <th>Nama Hotel</th>
-                        <th>Catatan</th>
+                        <th>Nama Penempatan</th>
                         <th>Hasil</th>
+                        <th>Posisi Akhir</th>
+                        <th>Catatan</th>
                         <th>Status</th>
                     </thead>
                     <tbody>
@@ -45,11 +45,11 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$finalinterview->jadwal->lamaran->pelamar->nama}}</td>
                             <td>{{$finalinterview->jadwal->lamaran->lowongan->nama}} - {{$finalinterview->jadwal->lamaran->posisi}}</td>
-                            <td>{{$finalinterview->jadwal->tanggal_finalinterview}}</td>
-                            <td>{{$finalinterview->nama_kapal}}</td>
-                            <td>{{$finalinterview->nama_hotel}}</td>
-                            <td>{{$finalinterview->catatan}}</td>
+                            <td>{{date_format(date_create($finalinterview->jadwal->tanggal_finalinterview),"d-m-Y")}}</td>
+                            <td>{{$finalinterview->nama_penempatan}}</td>
                             <td>{{strtoupper($finalinterview->hasil)}}</td>
+                            <td>{{$finalinterview->posisi}}</td>
+                            <td>{{$finalinterview->catatan}}</td>
                             <td>{{$finalinterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         </tr>
                         @endforeach

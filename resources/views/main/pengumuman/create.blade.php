@@ -29,7 +29,7 @@
                 <div class="form-group mt-3">
                     <label for="foto">File</label>
                     <input type="file" class="form-control file" name="file" id="file">
-                    {{-- <span class="text-small">masukan gambar atau poster dari lowongan kerja</span> --}}
+                    {{-- <span class="text-small">masukkan gambar atau poster dari lowongan kerja</span> --}}
                     <div class="invalid-feedback error-file"></div>
                 </div>
             </div>

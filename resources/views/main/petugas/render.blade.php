@@ -38,7 +38,7 @@
                         <td><img src="{{$petugas->foto}}" width="70px"></td>
                         <td>{{$petugas->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         <td>
-                            <button class="btn btn-primary btn-edit" data-id="{{$petugas->id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Petugas' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
+                            <button class="btn btn-primary btn-edit" data-id="{{$petugas->id}}"><i class="{{Auth::guard('weboperator')->user()->role == 'Manajer' ? 'ri-pencil-fill' : 'fa fa-eye'}}"></i></button>
                             {{-- <div class="dropdown d-inline-block">
                                 <button class="btn btn-soft-secondary btn-sm dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="ri-more-fill align-middle"></i>

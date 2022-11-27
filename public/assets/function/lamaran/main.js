@@ -12,6 +12,20 @@ function getData() {
     });
 }
 
+function getPelamar(pelamar_id) {
+    $.ajax({
+        type: "get",
+        url: "/lamaran/pelamar/"+pelamar_id,
+        dataType: "json",
+        success: function (response) {
+            $(".render").html(response.data);
+        },
+        error: function (error) {
+            console.log("Error", error);
+        },
+    });
+}
+
 function tambah() {
     $.ajax({
         type: "get",
@@ -28,6 +42,11 @@ function tambah() {
 
 $(document).ready(function () {
     getData();
+
+    $('body').on('click', '.btn-pelamar', function () {
+        let pelamar_id = $(this).data('id');
+        getPelamar(pelamar_id);
+    });
 
     $('body').on('click', '.btn-add', function () {
         tambah();
@@ -99,5 +118,36 @@ $(document).ready(function () {
         $('.status').val(status)
         // status == 1 ? $('.keterangan-group').hide() : $('.keterangan-group').show()
         $('#keterangan').html(keterangan)
+    });
+
+    $('body').on('click', '.btn-print', function () {
+        Swal.fire({
+            title: 'Cetak data lamaran?',
+            text: "Laporan akan dicetak",
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, cetak!'
+        }).then((result) => {
+            if (result.value) {
+                var mode = "iframe"; //popup
+                var close = mode == "popup";
+                var options = {
+                    mode: mode,
+                    popClose: close,
+                    popTitle: 'Rekruitmen Tenaga Kerja',
+                };
+                $.ajax({
+                    type: "GET",
+                    url: "lamaran/print",
+                    dataType: "json",
+                    success: function (response) {
+                        document.title= 'Laporan - ' + new Date().toJSON().slice(0,10).replace(/-/g,'/')
+                        $(response.data).find("div.printableArea").printArea(options);
+                    }
+                });
+            }
+        })
     });
 });

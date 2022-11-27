@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6">
-                        Ubah Hasil Interview
+                        Data Hasil Pra Interview
                     </div>
                     <div class="col-6 d-flex align-items-center">
                         <div class="m-auto"></div>

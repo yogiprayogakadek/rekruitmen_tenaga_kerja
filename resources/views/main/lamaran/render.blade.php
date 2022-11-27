@@ -5,6 +5,14 @@
                 <div class="col-6">
                     Data Lamaran
                 </div>
+                @if (Auth::guard('weboperator')->user()->role == 'Manajer')
+                <div class="col-6 d-flex align-items-center">
+                    <div class="m-auto"></div>
+                    <button type="button" class="btn btn-outline-primary btn-print">
+                        <i class="fa fa-print fa-1x"></i>
+                    </button>
+                </div>
+                @endif
             </div>
         </div>
         <div class="card-body">
@@ -26,7 +34,9 @@
                     <tr>
                         <td>{{$loop->iteration}}</td>
                         <td>{{$lamaran->lowongan->nama}}</td>
-                        <td>{{$lamaran->pelamar->nama}}</td>
+                        <td>
+                            <span style="cursor: pointer;" class="btn-pelamar" data-id="{{$lamaran->pelamar->id}}">{{$lamaran->pelamar->nama}}</span>
+                        </td>
                         <td>{{$lamaran->posisi}}</td>
                         <td>{{$lamaran->updated_at->format('d-m-Y')}}</td>
                         {{-- <td>{{$lamaran->status == '' ? 'Menunggu validasi' : ($lamaran->status == 1 ? 'Disetujui' : 'Ditolak')}}</td> --}}

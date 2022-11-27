@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6">
-                        Tambah Lowongan Kerja
+                        Tambah Lowongan
                     </div>
                     <div class="col-6 d-flex align-items-center">
                         <div class="m-auto"></div>
@@ -33,9 +33,9 @@
                     <div class="invalid-feedback error-deskripsi"></div>
                 </div>
                 <div class="form-group mt-3">
-                    <label for="foto">Gambar (jpg,png,jpeg)</label>
+                    <label for="foto">Gambar (.jpg, .png, .jpeg)</label>
                     <input type="file" class="form-control foto" name="foto" id="foto">
-                    <span class="text-small">masukan gambar atau poster dari lowongan kerja</span>
+                    <span class="text-muted text small">*masukkan gambar atau poster dari lowongan kerja</span>
                     <div class="invalid-feedback error-foto"></div>
                 </div>
             </div>

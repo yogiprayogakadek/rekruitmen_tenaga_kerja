@@ -23,7 +23,7 @@
     </noscript>
 
     <!-- Favicon -->
-    <link rel="icon" href="https://dashly-theme.com/assets/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="{{asset('assets/uploads/images/logo.png')}}" sizes="any">
     <!-- Page Title -->
     <title>Rekruitmen Tenaga Kerja | CPanel</title>
 </head>
@@ -49,7 +49,7 @@
 
                     <!-- Subtitle -->
                     <p class="text-secondary">
-                        Enter your username and password to access admin panel
+                        Masukkan username and password untuk akses panel admin
                     </p>
 
                     <!-- Form -->
@@ -65,7 +65,7 @@
                                     </label>
 
                                     <!-- Input -->
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Your username" name="username" id="username" value="{{ old('username') }}">
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="masukkan username" name="username" id="username" value="{{ old('username') }}">
                                     @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -91,7 +91,7 @@
                                     <!-- Input -->
                                     <div class="input-group input-group-merge">
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" autocomplete="off"
-                                            data-toggle-password-input="" placeholder="Your password" name="password">
+                                            data-toggle-password-input="" placeholder="masukkan password" name="password">
 
                                         <button type="button" class="input-group-text px-4 text-secondary link-primary"
                                             data-toggle-password=""></button>
@@ -121,7 +121,7 @@
 
                 <!-- Image -->
                 <div class="bg-size-cover bg-position-center bg-repeat-no-repeat overlay overlay-dark overlay-50 vh-100 me-n4"
-                    style="background-image: url(https://dashly-theme.com/assets//images/covers/sign-in-cover.jpeg);">
+                    style="background-image: url({{asset('assets/images/ship.jpg')}});">
                 </div>
             </div>
         </div> <!-- / .row -->

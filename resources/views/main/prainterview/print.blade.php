@@ -35,8 +35,8 @@
                         <th>Jadwal</th>
                         <th>Rekomendasi</th>
                         <th>Grade</th>
-                        <th>Catatan</th>
                         <th>Hasil</th>
+                        <th>Catatan</th>
                         <th>Status</th>
                     </thead>
                     <tbody>
@@ -45,11 +45,11 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$prainterview->jadwal->lamaran->pelamar->nama}}</td>
                             <td>{{$prainterview->jadwal->lamaran->lowongan->nama}} - {{$prainterview->jadwal->lamaran->posisi}}</td>
-                            <td>{{$prainterview->jadwal->tanggal_prainterview}}</td>
+                            <td>{{date_format(date_create($prainterview->jadwal->tanggal_prainterview),"d-m-Y")}}</td>
                             <td>{{$prainterview->rekomendasi}}</td>
                             <td>{{$prainterview->grade}}</td>
-                            <td>{{$prainterview->catatan}}</td>
                             <td>{{strtoupper($prainterview->hasil)}}</td>
+                            <td>{{$prainterview->catatan}}</td>
                             <td>{{$prainterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         </tr>
                         @endforeach

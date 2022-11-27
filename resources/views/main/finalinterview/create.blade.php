@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6">
-                        Tambah Hasil Interview
+                        Tambah Hasil Final Interview
                     </div>
                     <div class="col-6 d-flex align-items-center">
                         <div class="m-auto"></div>
@@ -17,7 +17,7 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label for="prainterview">Pelamar Lolos Prainterview</label>
+                    <label for="prainterview">Pelamar Lolos Pra Interview</label>
                     <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown">
                         <option value="">Pilih nama pelamar...</option>
                         @foreach ($prainterview as $prainterview)
@@ -32,7 +32,7 @@
                     <div class="invalid-feedback error-rekomendasi"></div>
                 </div>
                 <div class="form-group will-show mt-2">
-                    <label for="posisi">Posisi Final</label>
+                    <label for="posisi">Posisi Akhir</label>
                     <select name="posisi" id="posisi" class="form-select posisi"></select>
                     <div class="invalid-feedback error-posisi"></div>
                 </div>

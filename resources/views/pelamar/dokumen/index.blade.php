@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Lamaran')
+@section('title', 'Pelamar')
 
 @section('content')
     <div class="row">
@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">
-                            Data Biodata Lamaran
+                            Data Biodata Pelamar
                         </div>
                     </div>
                 </div>
@@ -27,22 +27,27 @@
                     </div>
                     <div class="form-group mt-3">
                         <label for="tanggal-lahir">Tanggal lahir</label>
-                        <input type="date" class="form-control tanggal_lahir" name="tanggal_lahir" id="tanggal-lahir" placeholder="masukkan tanggal lahir" value="{{$pelamar->tanggal_lahir}}" disabled>
+                        <input class="form-control tanggal_lahir" name="tanggal_lahir" id="tanggal-lahir" placeholder="masukkan tanggal lahir" value="{{date_format(date_create($pelamar->tanggal_lahir),"d-m-Y")}}" disabled>
                         <div class="invalid-feedback error-tanggal_lahir"></div>
                     </div>
                     <div class="form-group mt-3">
                         <label for="jenis-kelamin">Jenis Kelamin</label>
                         <select name="jenis_kelamin" id="jenis-kelamin" class="form-control jenis_kelamin" disabled>
                             <option value="">Pilih jenis kelamin...</option>
-                            <option value="1" {{$pelamar->jenis_kelamin == 1 ? 'selected' : ''}}>Male</option>
-                            <option value="0" {{$pelamar->jenis_kelamin == 0 ? 'selected' : ''}}>Female</option>
+                            <option value="1" {{$pelamar->jenis_kelamin == 1 ? 'selected' : ''}}>Laki - Laki</option>
+                            <option value="0" {{$pelamar->jenis_kelamin == 0 ? 'selected' : ''}}>Perempuan</option>
                         </select>
                         <div class="invalid-feedback error-jenis_kelamin"></div>
                     </div>
                     <div class="form-group mt-3">
-                        <label for="telepon">No. Telepon</label>
+                        <label for="telepon">Telepon</label>
                         <input type="text" class="form-control telepon" name="telepon" id="telepon" placeholder="masukkan telepon" value="{{$pelamar->telepon}}" disabled>
                         <div class="invalid-feedback error-telepon"></div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="agama">Agama</label>
+                        <input type="text" class="form-control agama" name="agama" id="agama" placeholder="masukkan agama" value="{{$pelamar->agama}}" disabled>
+                        <div class="invalid-feedback error-agama"></div>
                     </div>
                     <div class="form-group mt-3">
                         <label for="alamat">Alamat</label>
@@ -50,9 +55,34 @@
                         <div class="invalid-feedback error-alamat"></div>
                     </div>
                     <div class="form-group mt-3">
+                        <label for="berat_badan">Berat Badan</label>
+                        <input type="text" class="form-control berat_badan" name="berat_badan" id="berat_badan" placeholder="masukkan berat_badan" value="{{$pelamar->berat_badan}}" disabled>
+                        <div class="invalid-feedback error-berat_badan"></div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="tinggi_badan">Tinggi Badan</label>
+                        <input type="text" class="form-control tinggi_badan" name="tinggi_badan" id="tinggi_badan" placeholder="masukkan tinggi_badan" value="{{$pelamar->tinggi_badan}}" disabled>
+                        <div class="invalid-feedback error-tinggi_badan"></div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="marital_status">Marital Status</label>
+                        <input type="text" class="form-control marital_status" name="marital_status" id="marital_status" placeholder="masukkan marital_status" value="{{$pelamar->marital_status}}" disabled>
+                        <div class="invalid-feedback error-marital_status"></div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control email" name="email" id="email" placeholder="masukkan email" value="{{$pelamar->email}}" disabled>
+                        <div class="invalid-feedback error-email"></div>
+                    </div>
+                    <div class="form-group mt-3">
                         <label for="user">Username</label>
                         <input type="text" class="form-control username" name="username" id="username" placeholder="masukkan username" value="{{$pelamar->username}}" disabled>
                         <div class="invalid-feedback error-username"></div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <label for="foto">Foto</label>
+                        <img class="d-block" src="{{$pelamar->foto}}" width="120px">
+                        <div class="invalid-feedback error-foto"></div>
                     </div>
                     <div class="form-group mt-3">
                         <label><h5><strong>Dokuments</strong></h5></label>

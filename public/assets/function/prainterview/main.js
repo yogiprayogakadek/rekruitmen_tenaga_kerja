@@ -27,11 +27,30 @@ function tambah() {
     });
 }
 
+function getPelamar(pelamar_id) {
+    $.ajax({
+        type: "get",
+        url: "/prainterview/pelamar/"+pelamar_id,
+        dataType: "json",
+        success: function (response) {
+            $(".render").html(response.data);
+        },
+        error: function (error) {
+            console.log("Error", error);
+        },
+    });
+}
+
 $(document).ready(function () {
     getData();
 
     $('body').on('click', '.btn-add', function () {
         tambah();
+    });
+
+    $('body').on('click', '.btn-pelamar', function () {
+        let pelamar_id = $(this).data('id');
+        getPelamar(pelamar_id);
     });
 
     $('body').on('click', '.btn-data', function () {
@@ -185,12 +204,12 @@ $(document).ready(function () {
         } else {
             $('.will-show').show();
             $.get("prainterview/daftar-posisi-lowongan/"+lamaran, function (data) {
-                $.each(data, function (index, value) { 
+                $.each(data, function (index, value) {
                     $('.rekomendasi').append('<option value="'+value+'">'+value+'</option>')
                 });
             });
         }
-    }); 
+    });
 
     $('body').on('click', '.btn-print', function () {
         Swal.fire({

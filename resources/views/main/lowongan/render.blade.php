@@ -24,7 +24,7 @@
                     <th>No</th>
                     <th>Nama Lowongan</th>
                     <th>Posisi</th>
-                    <th>Foto</th>
+                    <th>Gambar</th>
                     <th>Deskripsi</th>
                     <th>Petugas</th>
                     @if (Auth::guard('weboperator')->user()->role == 'Petugas')

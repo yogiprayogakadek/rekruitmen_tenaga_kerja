@@ -39,8 +39,8 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$pengumuman->perihal}}</td>
                         <td>{{$pengumuman->deskripsi}}</td>
-                        <td>{{$pengumuman->created_at->format('d/m/y H:i')}}</td>
-                        <td>{{$pengumuman->updated_at->format('d/m/y H:i')}}</td>
+                        <td>{{$pengumuman->created_at->format('d-m-Y / H:i')}}</td>
+                        <td>{{$pengumuman->updated_at->format('d-m-Y / H:i')}}</td>
                         <td>{!!$pengumuman->file != null ? '<a href="'.asset($pengumuman->file).'" target="_blank">Lihat</a>' : '-' !!}</td>
                         @if (Auth::guard('weboperator')->user())
                         @if (Auth::guard('weboperator')->user()->role == 'Petugas')
