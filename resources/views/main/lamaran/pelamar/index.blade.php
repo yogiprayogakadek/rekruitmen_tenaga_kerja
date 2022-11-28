@@ -11,40 +11,40 @@
     }
 </style>
 <div class="col-12">
-    @foreach ($lamaran as $lamaran)
+    @foreach ($lamaran as $data)
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-3">
-                        <img class="img-fluid" src="{{asset($lamaran->lowongan->foto)}}" width="300px">
+                        <img class="img-fluid" src="{{asset($data->lowongan->foto)}}" width="300px">
                     </div>
                     <div class="col-8">
                         <table>
                             <tbody>
                                 <tr>
                                     <td class="text-uppercase">Nama Lowongan</td>
-                                    <td>{{$lamaran->lowongan->nama}}</td>
+                                    <td>{{$data->lowongan->nama}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Posisi</td>
-                                    <td>{{$lamaran->posisi}}</td>
+                                    <td>{{$data->posisi}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Tanggal Daftar</td>
-                                    <td>{{$lamaran->updated_at->format('d-m-Y')}}</td>
+                                    <td>{{$data->updated_at->format('d-m-Y')}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Keterangan</td>
-                                    <td>{{$lamaran->keterangan ?? '-'}}</td>
+                                    <td>{{$data->keterangan ?? '-'}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Status</td>
                                     <td>
-                                        @if ($lamaran->status == '')
+                                        @if ($data->status == '')
                                         Menunggu Validasi
-                                        @elseif ($lamaran->status == 1)
+                                        @elseif ($data->status == 1)
                                         Disetujui
-                                        @elseif ($lamaran->status == 2)
+                                        @elseif ($data->status == 2)
                                         Dipending
                                         @else
                                         Ditolak
@@ -58,5 +58,8 @@
             </div>
         </div>
     @endforeach
+    <div class="d-flex justify-content-center">
+        {!! $lamaran->links() !!}
+    </div>
 </div>
 

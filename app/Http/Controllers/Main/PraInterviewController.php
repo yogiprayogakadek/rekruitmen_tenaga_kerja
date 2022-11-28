@@ -34,7 +34,7 @@ class PraInterviewController extends Controller
             $jadwal = Jadwal::whereIn('lamaran_id', $lamaran)->pluck('id')->toArray();
             $prainterview = PraInterview::with(['jadwal' => function($query) use($lamaran) {
                 $query->whereIn('lamaran_id', $lamaran);
-            }])->whereIn('jadwal_id', $jadwal)->get();
+            }])->whereIn('jadwal_id', $jadwal)->paginate(2);
             $view = [
                 'data' => view('main.prainterview.pelamar.index', compact('prainterview'))->render()
             ];

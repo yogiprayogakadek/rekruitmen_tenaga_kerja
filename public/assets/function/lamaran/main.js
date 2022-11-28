@@ -12,6 +12,20 @@ function getData() {
     });
 }
 
+function fetch_pagination(page) {
+    $.ajax({
+        type: "get",
+        url: "/lamaran/render?page="+page,
+        dataType: "json",
+        success: function (response) {
+            $(".render").html(response.data);
+        },
+        error: function (error) {
+            console.log("Error", error);
+        },
+    });
+}
+
 function getPelamar(pelamar_id) {
     $.ajax({
         type: "get",
@@ -149,5 +163,11 @@ $(document).ready(function () {
                 });
             }
         })
+    });
+
+    $(document).on('click', '.pagination a', function (event) {
+        event.preventDefault();
+        var page = $(this).attr('href').split('page=')[1];
+        fetch_pagination(page);
     });
 });

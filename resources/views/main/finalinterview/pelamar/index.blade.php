@@ -11,43 +11,43 @@
     }
 </style>
 <div class="col-12">
-    @foreach ($finalinterview as $finalinterview)
+    @foreach ($finalinterview as $data)
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-3">
-                        <img class="img-fluid" src="{{asset($finalinterview->jadwal->lamaran->lowongan->foto)}}" width="300px">
+                        <img class="img-fluid" src="{{asset($data->jadwal->lamaran->lowongan->foto)}}" width="300px">
                     </div>
                     <div class="col-8">
                         <table>
                             <tbody>
                                 <tr>
                                     <td class="text-uppercase">Nama Lowongan</td>
-                                    <td>{{$finalinterview->jadwal->lamaran->lowongan->nama}}</td>
+                                    <td>{{$data->jadwal->lamaran->lowongan->nama}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Posisi</td>
-                                    <td>{{$finalinterview->jadwal->lamaran->posisi}}</td>
+                                    <td>{{$data->jadwal->lamaran->posisi}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Jadwal</td>
-                                    <td>{{date_format(date_create($finalinterview->jadwal->tanggal_finalinterview),"d-m-Y")}}</td>
+                                    <td>{{date_format(date_create($data->jadwal->tanggal_finalinterview),"d-m-Y")}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Nama Penempatan</td>
-                                    <td>{{$finalinterview->nama_penempatan}}</td>
+                                    <td>{{$data->nama_penempatan}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Hasil</td>
-                                    <td>{{$finalinterview->hasil}}</td>
+                                    <td>{{$data->hasil}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Posisi Akhir</td>
-                                    <td>{{strtoupper($finalinterview->posisi)}}</td>
+                                    <td>{{strtoupper($data->posisi)}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Tanggal Pembaruan</td>
-                                    <td>{{$finalinterview->updated_at->format('d-m-Y')}}</td>
+                                    <td>{{$data->updated_at->format('d-m-Y')}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -56,5 +56,9 @@
             </div>
         </div>
     @endforeach
+
+    <div class="d-flex justify-content-center">
+        {!! $finalinterview->links() !!}
+    </div>
 </div>
 

@@ -44,6 +44,8 @@ Route::middleware('isLoggedInOperator')->group(function() {
         return view('main.dashboard.index');
     })->name('dashboard');
 
+    // Route::get('/dashboard', 'Main\DashboardController@index')->name('dashboard');
+
     Route::namespace('Main')->group(function() {
 
         // Petugas Controller

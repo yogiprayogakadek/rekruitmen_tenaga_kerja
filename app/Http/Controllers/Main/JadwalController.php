@@ -32,7 +32,7 @@ class JadwalController extends Controller
             return response()->json($view);
         } else {
             $lamaran = Lamaran::where('pelamar_id', Auth::user()->id)->pluck('id')->toArray();
-            $jadwal = Jadwal::with('lamaran.pelamar', 'lamaran.lowongan')->whereIn('lamaran_id', $lamaran)->get();
+            $jadwal = Jadwal::with('lamaran.pelamar', 'lamaran.lowongan')->whereIn('lamaran_id', $lamaran)->paginate(2);
             $view = [
                 'data' => view('main.jadwal.pelamar.index', compact('jadwal'))->render()
             ];

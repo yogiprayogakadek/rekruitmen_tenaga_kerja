@@ -12,11 +12,7 @@ class LamaranController extends Controller
 {
     public function index()
     {
-        if(Auth::guard('weboperator')) {
-            return view('main.lamaran.index');
-        } else {
-            return view('pelamar.lamaran.index');
-        }
+        return view('main.lamaran.index');
     }
 
     public function render()
@@ -28,8 +24,9 @@ class LamaranController extends Controller
             ];
             return response()->json($view);
         } else {
-            $lamaran = Lamaran::with('lowongan', 'pelamar')->where('pelamar_id', Auth::user()->id)->get();
-            // dd($lamaran);
+            // $lamaran = Lamaran::with('lowongan', 'pelamar')->where('pelamar_id', Auth::user()->id)->get();
+            
+            $lamaran = Lamaran::with('lowongan', 'pelamar')->where('pelamar_id', Auth::user()->id)->paginate(2);
             $view = [
                 'data' => view('main.lamaran.pelamar.index', compact('lamaran'))->render()
             ];
