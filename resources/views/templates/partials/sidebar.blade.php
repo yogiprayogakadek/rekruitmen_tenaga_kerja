@@ -2,23 +2,23 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="{{route('dashboard')}}" class="logo logo-dark">
+        {{-- <a href="{{route('dashboard')}}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
                 <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="17">
             </span>
-        </a>
+        </a> --}}
         <!-- Light Logo-->
-        <a href="{{route('dashboard')}}" class="logo logo-light">
+        {{-- <a href="{{route('dashboard')}}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{asset('assets/uploads/images/logo.png')}}" alt="" height="22">
             </span>
             <span class="logo-lg">
                 Bali Ocean Crew
             </span>
-        </a>
+        </a> --}}
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover"
             id="vertical-hover">
             <i class="ri-record-circle-line"></i>
@@ -34,7 +34,7 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link {{Request::is('dashboard') ? 'active' : '' }}" href="{{route('dashboard')}}">
+                    <a class="nav-link menu-link {{Request::is('dashboard') ? 'active' : '' }}" href="{{route('dashboard.index')}}">
                         <i class="las la-home"></i> <span data-key="t-widgets">Dashboard</span>
                     </a>
                 </li>

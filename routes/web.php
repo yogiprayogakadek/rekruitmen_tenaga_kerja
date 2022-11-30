@@ -40,13 +40,23 @@ Route::middleware('isLoggedInPelamar')->group(function() {
 });
 
 Route::middleware('isLoggedInOperator')->group(function() {
-    Route::get('/dashboard', function() {
-        return view('main.dashboard.index');
-    })->name('dashboard');
+    // Route::get('/dashboard', function() {
+    //     return view('main.dashboard.index');
+    // })->name('dashboard');
 
     // Route::get('/dashboard', 'Main\DashboardController@index')->name('dashboard');
 
     Route::namespace('Main')->group(function() {
+
+        // Dashboard Controller
+        Route::controller(DashboardController::class)
+            ->prefix('dashboard')
+            ->as('dashboard.')
+            ->group(function() {
+                Route::get('', 'dashboard')->name('index');
+                Route::post('/chart', 'chart')->name('chart');
+            });
+
 
         // Petugas Controller
         Route::controller(PetugasController::class)
