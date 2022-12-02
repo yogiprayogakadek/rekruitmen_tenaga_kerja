@@ -22,15 +22,15 @@ use App\Models\Pengumuman;
 
     function total_data_model($model) {
         $total = 0;
-        
+
         $a = 'App\Models\\' . $model;
         $total = $a::count();
-        
+
         return $total;
     }
 
     function needValidate(){
-        return Lamaran::where('status', '!=', 1)->count();
+        return Lamaran::wherenull('status')->count();
     }
 
     function bulan()
@@ -49,6 +49,6 @@ use App\Models\Pengumuman;
             'November',
             'Desember',
         ];
-    
+
         return $bulan;
     }
