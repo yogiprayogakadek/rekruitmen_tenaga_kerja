@@ -24,7 +24,7 @@ class CpanelController extends Controller
                     'message' => 'Anda sudah tidak aktif'
                 ]);
             }
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard.index');
         }
 
         return redirect()

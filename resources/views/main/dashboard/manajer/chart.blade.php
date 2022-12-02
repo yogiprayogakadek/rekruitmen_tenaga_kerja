@@ -1,5 +1,5 @@
-<div>
-    <canvas id="myChart" width="300px"></canvas>
+<div style="height:70vh; width:200vw;">
+    <canvas id="myChart"></canvas>
 </div>
 
 <script>

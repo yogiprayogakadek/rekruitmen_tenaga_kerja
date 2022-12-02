@@ -29,6 +29,10 @@ use App\Models\Pengumuman;
         return $total;
     }
 
+    function needValidate(){
+        return Lamaran::where('status', '!=', 1)->count();
+    }
+
     function bulan()
     {
         $bulan = [
