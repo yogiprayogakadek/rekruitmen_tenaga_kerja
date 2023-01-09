@@ -85,7 +85,7 @@
                         <div class="invalid-feedback error-foto"></div>
                     </div>
                     <div class="form-group mt-3">
-                        <label><h5><strong>Dokuments</strong></h5></label>
+                        <label><h5><strong>Dokumen</strong></h5></label>
                         <table class="table">
                             <tr>
                                 <th>CV</th>

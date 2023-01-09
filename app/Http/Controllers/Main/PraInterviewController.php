@@ -116,17 +116,17 @@ class PraInterviewController extends Controller
     {
         try {
             $pra = PraInterview::where('id', $request->prainterview_id)->first();
-            if($request->lamaran != $pra->jadwal->lamaran_id) {
-                $jadwal = Jadwal::where('lamaran_id', $request->lamaran)->first();
-                $cek = PraInterview::where('jadwal_id', $jadwal->id)->where('status', true)->first();
-                if(!$cek) {
-                    return response()->json([
-                        'status' => 'error',
-                        'message' => 'Data gagal disimpan',
-                        'title' => 'Gagal'
-                    ]);
-                }
-            }
+            // if($request->lamaran != $pra->jadwal->lamaran_id) {
+            //     $jadwal = Jadwal::where('lamaran_id', $request->lamaran)->first();
+            //     $cek = PraInterview::where('jadwal_id', $jadwal->id)->where('status', true)->first();
+            //     if(!$cek) {
+            //         return response()->json([
+            //             'status' => 'error',
+            //             'message' => 'Data gagal disimpan',
+            //             'title' => 'Gagal'
+            //         ]);
+            //     }
+            // }
             $pra->update([
                 'user_id' => Auth::guard('weboperator')->user()->id,
                 'jadwal_id' => $pra->jadwal_id,

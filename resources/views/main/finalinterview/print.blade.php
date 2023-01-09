@@ -30,12 +30,14 @@
                 <table class="table table-hover table-striped" id="tableData">
                     <thead>
                         <th>No</th>
+                        <th>Nama Lowongan</th>
                         <th>Pelamar</th>
-                        <th>Nama dan Posisi</th>
+                        <th>Posisi</th>
                         <th>Jadwal</th>
                         <th>Nama Penempatan</th>
                         <th>Hasil</th>
                         <th>Posisi Akhir</th>
+                        <th>Tanggal Pembaruan</th>
                         <th>Catatan</th>
                         <th>Status</th>
                     </thead>
@@ -43,12 +45,14 @@
                         @foreach ($finalinterview as $finalinterview)
                         <tr>
                             <td>{{$loop->iteration}}</td>
+                            <td>{{$finalinterview->jadwal->lamaran->lowongan->nama}}</td>
                             <td>{{$finalinterview->jadwal->lamaran->pelamar->nama}}</td>
-                            <td>{{$finalinterview->jadwal->lamaran->lowongan->nama}} - {{$finalinterview->jadwal->lamaran->posisi}}</td>
+                            <td>{{$finalinterview->jadwal->lamaran->posisi}}</td>
                             <td>{{date_format(date_create($finalinterview->jadwal->tanggal_finalinterview),"d-m-Y")}}</td>
                             <td>{{$finalinterview->nama_penempatan}}</td>
                             <td>{{strtoupper($finalinterview->hasil)}}</td>
                             <td>{{$finalinterview->posisi}}</td>
+                            <td>{{$finalinterview->updated_at->format('d-m-Y')}}</td>
                             <td>{{$finalinterview->catatan}}</td>
                             <td>{{$finalinterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         </tr>

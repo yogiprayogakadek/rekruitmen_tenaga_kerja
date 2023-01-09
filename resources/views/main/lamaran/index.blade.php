@@ -1,6 +1,6 @@
 @extends('templates.master')
 
-@section('title', 'Data Lamaran')
+@section('title', 'Lamaran')
 
 @section('content')
     <div class="row render"></div>

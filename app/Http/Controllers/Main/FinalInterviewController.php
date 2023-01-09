@@ -45,8 +45,9 @@ class FinalInterviewController extends Controller
 
     public function create()
     {
-        $jadwal = Jadwal::pluck('id')->toArray();
-        $prainterview = PraInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->whereNotIn('jadwal_id', $jadwal)->where('hasil', 'lulus')->get();
+        $jadwal = Jadwal::whereNotNull('lokasi_finalinterview')->pluck('id')->toArray();
+        $finalinterview = FinalInterview::whereIn('jadwal_id', $jadwal)->pluck('jadwal_id')->toArray();
+        $prainterview = PraInterview::with('jadwal.lamaran.pelamar', 'jadwal.lamaran.lowongan')->whereNotIn('jadwal_id', $finalinterview)->where('hasil', 'lulus')->get();
         // $lamaran = Lamaran::with('pelamar', 'lowongan')->where('status', true)->get();
         $view = [
             'data' => view('main.finalinterview.create', compact('prainterview'))->render()
@@ -132,12 +133,12 @@ class FinalInterviewController extends Controller
 
             $final->update([
                 'user_id' => Auth::guard('weboperator')->user()->id,
-                'jadwal_id' => $request->jadwal,
+                // 'jadwal_id' => $request->jadwal,
                 'posisi' => $request->posisi,
                 'nama_penempatan' => $request->nama_penempatan,
                 'catatan' => $request->catatan,
                 'hasil' => $request->hasil,
-                'status' => $request->status,
+                // 'status' => $request->status,
                 'penempatan' => $request->penempatan,
             ]);
             return response()->json([

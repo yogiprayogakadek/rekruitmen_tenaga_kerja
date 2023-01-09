@@ -33,11 +33,15 @@
                         <th>Nama</th>
                         <th>Tempat, Tanggal Lahir</th>
                         <th>Jenis Kelamin</th>
+                        <th>No. Telepon</th>
                         <th>Agama</th>
                         <th>Alamat</th>
                         <th>Berat Badan</th>
                         <th>Tinggi Badan</th>
                         <th>Marital Status</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Foto</th>
                         <th>Status</th>
                     </thead>
                     <tbody>
@@ -47,11 +51,17 @@
                             <td>{{$pelamar->nama}}</td>
                             <td>{{$pelamar->tempat_lahir}}, {{date_format(date_create($pelamar->tanggal_lahir),"d-m-Y")}}</td>
                             <td>{{$pelamar->jenis_kelamin == 1 ? 'Laki - Laki' : 'Perempuan'}}</td>
+                            <td>{{$pelamar->telepon}}</td>
                             <td>{{$pelamar->agama}}</td>
                             <td>{{$pelamar->alamat}}</td>
                             <td>{{$pelamar->berat_badan}} kg</td>
                             <td>{{$pelamar->tinggi_badan}} cm</td>
                             <td>{{$pelamar->marital_status}}</td>
+                            <td>{{$pelamar->username}}</td>
+                            <td>{{$pelamar->email}}</td>
+                            <td>
+                                <img src="{{asset($pelamar->foto)}}" width="70px">
+                            </td>
                             <td>{{$pelamar->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
                         </tr>
                         @endforeach

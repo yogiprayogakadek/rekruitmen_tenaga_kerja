@@ -69,7 +69,7 @@
 
                 <div class="form-group mt-2">
                     <label for="finalinterview">Tanggal Final Interview</label>
-                    <input type="date" name="finalinterview" id="finalinterview" class="form-control prainterview">
+                    <input type="date" name="finalinterview" id="finalinterview" class="form-control prainterview" value="{{$jadwal->tanggal_finalinterview}}">
                     <span class="text-small text-muted">*kosongkan jika belum ada jadwal</span>
                     <div class="invalid-feedback error-finalinterview"></div>
                 </div>
@@ -77,13 +77,16 @@
                     @php
                         $jam_finalinterview = explode(':', $jadwal->jam_finalinterview)
                         @endphp
-                    <label for="jam-final">Jam Final Fnterview</label>
+                    <label for="jam-final">Jam Final interview</label>
                     <div class="row">
                         <div class="col-6">
                             <select name="jam_final" id="jam-final" class="form-select jam_final">
                                 @for ($m = 0; $m < 24; $m++)
-                                <option value="{{$m}}">{{$m}}</option>
-                                {{-- <option value="{{$m}}" {{$m == $jam_prainterview[0] ? 'selected' : ''}}>{{$m}}</option> --}}
+                                    @if ($jadwal->jam_finalinterview != null)
+                                        <option value="{{$m}}" {{$m == $jam_finalinterview[0] ? 'selected' : ''}}>{{$m}}</option>
+                                    @else
+                                        <option value="{{$m}}">{{$m}}</option>
+                                    @endif
                                 @endfor
                             </select>
                             <div class="invalid-feedback error-jam_final"></div>
@@ -91,8 +94,12 @@
                         <div class="col-6">
                             <select name="menit_final" id="menit-final" class="form-select menit_final">
                                 @for ($n = 0; $n < 60; $n++)
-                                    <option value="{{$n < 10 ? 0 . $n : $n}}">{{$n < 10 ? 0 . $n : $n}}</option>
-                                    {{-- <option value="{{$n < 10 ? 0 . $n : $n}}" {{$n == $jam_finalinterview[1] ? 'selected' : ''}}>{{$n < 10 ? 0 . $n : $n}}</option> --}}
+                                    @if ($jadwal->jam_finalinterview != null)
+                                        <option value="{{$n < 10 ? 0 . $n : $n}}" {{$n == $jam_finalinterview[1] ? 'selected' : ''}}>{{$n < 10 ? 0 . $n : $n}}</option>
+                                        {{-- <option value="{{$n < 10 ? 0 . $n : $n}}" {{$n == $jam_finalinterview[1] ? 'selected' : ''}}>{{$n < 10 ? 0 . $n : $n}}</option> --}}
+                                    @else
+                                        <option value="{{$n < 10 ? 0 . $n : $n}}">{{$n < 10 ? 0 . $n : $n}}</option>
+                                    @endif
                                 @endfor
                             </select>
                             <div class="invalid-feedback error-menit_final"></div>

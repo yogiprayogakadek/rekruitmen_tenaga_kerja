@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6">
-                        Data Hasil Pra Interview
+                        Ubah Hasil Pra Interview
                     </div>
                     <div class="col-6 d-flex align-items-center">
                         <div class="m-auto"></div>
@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <input type="hidden" name="prainterview_id" value="{{$prainterview->id}}" id="prainterview-id">
                     <label for="lamaran">Lamaran</label>
-                    <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
+                    <select name="lamaran" id="lamaran" class="form-select lamaran select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user() ? 'disabled' : '')}}>
                         @foreach ($lamaran as $lamaran)
                             <option value="{{$lamaran->id}}">{{$lamaran->pelamar->nama}} | {{$lamaran->lowongan->nama}} - {{$lamaran->posisi}}</option>
                         @endforeach

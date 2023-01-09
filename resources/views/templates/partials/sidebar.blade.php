@@ -61,7 +61,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('pelamar') ? 'active' : '' }}" href="{{route('pelamar.index')}}">
-                        <i class="las la-user-circle"></i> <span data-key="t-widgets">Pelamar</span>
+                        <i class="las la-users"></i> <span data-key="t-widgets">Pelamar</span>
                     </a>
                 </li>
                 @endif
@@ -89,7 +89,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link {{Request::is('prainterview') ? 'active' : '' }}" href="{{route('prainterview.index')}}">
-                        <i class="las la-pencil-ruler"></i> <span data-key="t-widgets">Pra Interview</span>
+                        <i class="las la-clipboard"></i> <span data-key="t-widgets">Pra Interview</span>
                     </a>
                 </li>
 

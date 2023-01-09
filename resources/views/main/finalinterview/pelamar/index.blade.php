@@ -84,12 +84,16 @@
                                     <td>{{$data->nama_penempatan}}</td>
                                 </tr>
                                 <tr>
+                                    <td class="text-uppercase">Catatan</td>
+                                    <td>{{$data->catatan}}</td>
+                                </tr>
+                                <tr>
                                     <td class="text-uppercase">Hasil</td>
-                                    <td>{{$data->hasil}}</td>
+                                    <td>{{strtoupper($data->hasil)}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Posisi Akhir</td>
-                                    <td>{{strtoupper($data->posisi)}}</td>
+                                    <td>{{$data->posisi}}</td>
                                 </tr>
                                 <tr>
                                     <td class="text-uppercase">Tanggal Pembaruan</td>

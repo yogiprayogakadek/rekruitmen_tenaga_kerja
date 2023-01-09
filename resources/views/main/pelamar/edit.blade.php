@@ -72,14 +72,14 @@
                     <div class="invalid-feedback error-marital_status"></div>
                 </div>
                 <div class="form-group mt-3">
-                    <label for="user">Username</label>
-                    <input type="text" class="form-control username" name="username" id="username" placeholder="masukkan username" value="{{$pelamar->username}}" disabled>
-                    <div class="invalid-feedback error-username"></div>
-                </div>
-                <div class="form-group mt-3">
                     <label for="email">Email</label>
                     <input type="text" class="form-control email" name="email" id="email" placeholder="masukkan email" value="{{$pelamar->email}}" {{Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : ''}}>
                     <div class="invalid-feedback error-email"></div>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="user">Username</label>
+                    <input type="text" class="form-control username" name="username" id="username" placeholder="masukkan username" value="{{$pelamar->username}}" disabled>
+                    <div class="invalid-feedback error-username"></div>
                 </div>
                 <div class="form-group mt-3">
                     <label for="foto">Foto</label>

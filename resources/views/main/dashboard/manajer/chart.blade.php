@@ -1,5 +1,5 @@
-<div style="height:70vh; width:200vw;">
-    <canvas id="myChart"></canvas>
+<div>
+    <canvas id="myChart" width="400" height="400"></canvas>
 </div>
 
 <script>
@@ -30,7 +30,7 @@
     var data = {
         labels: label,
         datasets: [{
-            label: '{{$filter == "kelulusan" ? "Jumlah Kelulusan" : "Jumlah Pelamar"}}',
+            label: '{{$filter == "kelulusan" ? "Jumlah Kelulusan" : "Jumlah Lamaran"}}',
             data: jumlah,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',

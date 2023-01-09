@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group mt-2 will-show mt-2">
                     <label for="grade">Catatan</label>
-                    <textarea name="catatan" id="catatan" class="form-control catatan"></textarea>
+                    <textarea name="catatan" id="catatan" class="form-control catatan" placeholder="masukkan catatan"></textarea>
                     <div class="invalid-feedback error-catatan"></div>
                 </div>
                 <div class="form-group will-show mt-2">

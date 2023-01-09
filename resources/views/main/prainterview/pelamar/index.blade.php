@@ -88,6 +88,10 @@
                                     <td>{{$data->grade}}</td>
                                 </tr>
                                 <tr>
+                                    <td class="text-uppercase">Catatan</td>
+                                    <td>{{$data->catatan}}</td>
+                                </tr>
+                                <tr>
                                     <td class="text-uppercase">Hasil</td>
                                     <td>{{strtoupper($data->hasil)}}</td>
                                 </tr>

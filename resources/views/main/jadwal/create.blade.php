@@ -58,12 +58,12 @@
                 </div>
                 <div class="form-group mt-2">
                     <label for="lokasi">Lokasi Pra Interview</label>
-                    <input type="text" name="lokasi" id="lokasi" class="form-control lokasi">
+                    <input type="text" name="lokasi" id="lokasi" class="form-control lokasi" placeholder="masukkan lokasi pra interview">
                     <div class="invalid-feedback error-lokasi"></div>
                 </div>
                 <div class="form-group mt-2">
                     <label for="keterangan">Keterangan</label>
-                    <textarea name="keterangan" id="keterangan" class="form-control keterangan"></textarea>
+                    <textarea name="keterangan" id="keterangan" class="form-control keterangan" placeholder="masukkan keterangan"></textarea>
                     <div class="invalid-feedback error-keterangan"></div>
                 </div>
             </div>

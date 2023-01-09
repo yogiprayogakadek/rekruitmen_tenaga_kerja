@@ -33,15 +33,15 @@
                 </div>
                 <div class="form-group mt-2 will-show">
                     <label for="grade">Grade</label>
-                    <input type="text" name="grade" id="grade" class="form-control grade">
+                    <input type="text" name="grade" id="grade" class="form-control grade" placeholder="masukkan grade">
                     <div class="invalid-feedback error-grade"></div>
                 </div>
                 <div class="form-group mt-2 will-show">
                     <label for="grade">Catatan</label>
-                    <textarea name="catatan" id="catatan" class="form-control catatan"></textarea>
+                    <textarea name="catatan" id="catatan" class="form-control catatan" placeholder="masukkan catatan"></textarea>
                     <div class="invalid-feedback error-catatan"></div>
                 </div>
-                <div class="form-group will-show">
+                <div class="form-group mt-2 will-show">
                     <label for="hasil">Hasil</label>
                     <select name="hasil" id="hasil" class="form-select hasil">
                         <option value="lulus">Lulus</option>

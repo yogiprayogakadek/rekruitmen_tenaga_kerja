@@ -5,7 +5,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6">
-                        Data Hasil Final Interview
+                        Ubah Hasil Final Interview
                     </div>
                     <div class="col-6 d-flex align-items-center">
                         <div class="m-auto"></div>
@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <input type="hidden" name="id" value="{{$final->id}}" id="id">
                     <label for="prainterview">Pelamar Lolos Pra Interview</label>
-                    <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
+                    <select name="jadwal" id="jadwal" class="form-select jadwal select-dropdown" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user() ? 'disabled' : '')}}>
                         <option value="">Pilih nama pelamar...</option>
                         @foreach ($prainterview as $prainterview)
                             <option value="{{$prainterview->jadwal->id}}" {{$prainterview->jadwal->id == $final->jadwal_id ? 'selected' : ''}}>{{$prainterview->jadwal->lamaran->pelamar->nama}} | {{$prainterview->jadwal->lamaran->lowongan->nama}} - {{$prainterview->jadwal->lamaran->posisi}}</option>
@@ -68,13 +68,13 @@
                     </select>
                     <div class="invalid-feedback error-hasil"></div>
                 </div>
-                <div class="form-group mt-2">
+                {{-- <div class="form-group mt-2">
                     <label for="status">Status</label>
                     <select name="status" class="form-control" {{!Auth::guard('weboperator')->user() ? 'disabled' : (Auth::guard('weboperator')->user()->role != 'Petugas' ? 'disabled' : '')}}>
                         <option value="1" {{$final->status == 1 ? 'selected' : ''}}>Aktif</option>
                         <option value="0" {{$final->status == 0 ? 'selected' : ''}}>Tidak Aktif</option>
                     </select>
-                </div>
+                </div> --}}
             </div>
             @if (Auth::guard('weboperator')->user())
             @if (Auth::guard('weboperator')->user()->role == 'Petugas')

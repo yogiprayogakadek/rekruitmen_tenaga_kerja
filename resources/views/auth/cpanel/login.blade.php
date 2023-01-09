@@ -49,7 +49,7 @@
 
                     <!-- Subtitle -->
                     <p class="text-secondary">
-                        Masukkan username and password untuk akses panel admin
+                        Masukkan username dan password untuk akses panel admin
                     </p>
 
                     <!-- Form -->

@@ -24,8 +24,9 @@
             <table class="table table-hover table-striped" id="tableData">
                 <thead>
                     <th>No</th>
+                    <th>Nama Lowongan</th>
                     <th>Pelamar</th>
-                    <th>Nama dan Posisi</th>
+                    <th>Posisi</th>
                     <th>Jadwal</th>
                     <th>Rekomendasi</th>
                     <th>Grade</th>
@@ -34,7 +35,7 @@
                     <th>Tanggal Pembaruan</th>
                     @if (Auth::guard('weboperator')->user())
                     @if (Auth::guard('weboperator')->user()->role == 'Petugas')
-                    <th>Status</th>
+                    {{-- <th>Status</th> --}}
                     @endif
                     @endif
                     <th>Aksi</th>
@@ -43,11 +44,11 @@
                     @foreach ($prainterview as $prainterview)
                     <tr>
                         <td>{{$loop->iteration}}</td>
+                        <td>{{$prainterview->jadwal->lamaran->lowongan->nama}}</td>
                         <td>
                             <span style="cursor: pointer;" class="btn-pelamar" data-id="{{$prainterview->jadwal->lamaran->pelamar->id}}">{{$prainterview->jadwal->lamaran->pelamar->nama}}</span>
                         </td>
-                        <td>{{$prainterview->jadwal->lamaran->lowongan->nama}} -
-                            {{$prainterview->jadwal->lamaran->posisi}}</td>
+                        <td>{{$prainterview->jadwal->lamaran->posisi}}</td>
                         <td>{{date_format(date_create($prainterview->jadwal->tanggal_prainterview),"d-m-Y")}}</td>
                         {{-- <td>{{$prainterview->jadwal->tanggal_prainterview}}</td> --}}
                         <td>{{$prainterview->rekomendasi}}</td>
@@ -57,7 +58,7 @@
                         <td>{{$prainterview->updated_at->format('d-m-Y')}}</td>
                         @if (Auth::guard('weboperator')->user())
                         @if (Auth::guard('weboperator')->user()->role == 'Petugas')
-                        <td>{{$prainterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td>
+                        {{-- <td>{{$prainterview->status == 1 ? 'Aktif' : 'Tidak Aktif'}}</td> --}}
                         @endif
                         <td>
                             <button class="btn btn-primary btn-edit" data-id="{{$prainterview->id}}"
